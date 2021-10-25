@@ -14,9 +14,9 @@
     
     <link rel="stylesheet" href="css/top_menu.css">
     <link rel="stylesheet" href="css/page_style.css">
-    <link rel="stylesheet" href="css/input_window.css">
-    <link rel="stylesheet" href="css/graph_window.css">
-    <link rel="stylesheet" href="css/sequences_window.css">
+    <link rel="stylesheet" href="css/genomic/input_window.css">
+    <link rel="stylesheet" href="css/genomic/graph_window.css">
+    <link rel="stylesheet" href="css/genomic/sequences_window.css">
 
     
 
@@ -30,22 +30,22 @@
     <!-- menu for heading bar -->
     <div id = top_menu>
         <!-- home -->
-        <div id = menu_button class = btn>
+        <div id = menu_button class = btn onclick="window.location.href = Web/index.html">
             Home
         </div>
 
         <!-- metabolic -->
-        <div id = menu_button class = btn>
+        <div id = menu_button class = btn onclick="window.location.href = Web/index_metabolic.html">
             Metabolic
         </div>
 
         <!-- genomic -->
-        <div id = menu_button class = selected>
+        <div id = menu_button class = selected onclick="location.reload()">
             Genomic
         </div>
 
         <!-- proteomic -->
-        <div id = menu_button class = btn>
+        <div id = menu_button class = btn onclick="window.location.href = Web/index_proteomique.html">
             Proteomic
         </div>
     </div>
@@ -53,7 +53,9 @@
 
     <!-- window input sequence -->
     <div id = input_window>
-
+        <script type="text/javascript">
+            document.write("window.location.href = " + window.location.href);
+        </script>
     </div>
  
 
