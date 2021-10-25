@@ -1,0 +1,10 @@
+#graph_window {
+    display: flex;
+    position: absolute;
+    border: 5px solid #002a9e;
+    background: rgba(255, 255, 255, 0.445);
+    width: 53%;
+    height: 360px;
+    top: 50px;
+    left: 45%;
+}

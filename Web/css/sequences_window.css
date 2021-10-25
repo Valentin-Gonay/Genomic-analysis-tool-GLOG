@@ -1,0 +1,9 @@
+#sequence_window {
+    display: flex;
+    border: 5px solid #9e4700;
+    position: absolute;
+    top: 430px;
+    background: rgba(255, 255, 255, 0.445);
+    width: calc(98% - 8px);
+    height: 360px;
+}
