@@ -1,0 +1,22 @@
+{
+  "name": "genomic-analysis-tool-glog",
+  "version": "1.0.0",
+  "description": "glog project",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valentin-Gonay/Genomic-analysis-tool-GLOG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valentin-Gonay/Genomic-analysis-tool-GLOG/issues"
+  },
+  "homepage": "https://github.com/Valentin-Gonay/Genomic-analysis-tool-GLOG#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
