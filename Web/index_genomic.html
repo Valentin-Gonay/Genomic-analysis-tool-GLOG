@@ -51,6 +51,14 @@
 
     <!-- window input sequence -->
     <div id = input_window>
+        <div class = "formblock all" in="qseq">
+            <label for ="seq">Enter FASTA sequence(s)</label>
+            <textarea id = "seq" class = "reset" rows = "5" cols = "80" name = "QUERY" suggesthint></textarea>
+            <label for="avatar"></label>
+            <input type="file"id="avatar" name="avatar" accept=".fasta">
+            <button type="button" onclick="displayValue();">Get Value</button>
+            
+        </div>
     </div>
  
 
@@ -69,6 +77,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <script src="js/loading.js"></script>
     <script src= "js/graph.js"></script>
+    <script src="js/get_input.js"></script>
 
 </body>
 

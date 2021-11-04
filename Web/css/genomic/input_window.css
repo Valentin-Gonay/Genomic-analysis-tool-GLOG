@@ -7,3 +7,19 @@
     width: 40%;
     height: 360px;
 }
+
+textarea {
+    height: 7rem;
+    font-size: 90%;
+    padding: 0.8em;
+}
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
