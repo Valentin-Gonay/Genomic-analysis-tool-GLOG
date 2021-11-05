@@ -1,5 +1,6 @@
 import subprocess
+#p1 = subprocess.run(['makeblastdb', '-in', '../Data/BD/test.fsa','-dbtype', 'nucl'], capture_output=True, text=True)
+#print(p1.stdout)
 
-print('coucou bg')
-#p1 = subprocess.run(['makeblastdb', '-in', 'DB', '-out', '/home/baudeau/bin/ncbi-blast/db.fasta',
-#                     '-dbtype', 'nucl'], capture_output=True, text=True)
+p1 = subprocess.run(['blastn','-db', '../Data/BD/test.fsa', '-query' ,'js/ref_ALPHA.fasta','-out','../Data/data/resu.txt'], capture_output=True, text=True)
+print(p1.stdout) 

@@ -28,7 +28,7 @@ app.listen(8080, () => console.log("Web server is listening... on port 8080"));
 app.post("/launch_py", async (req, res) => {
     var dataToSend;
   
-    const python = spawn('python', [`${__dirname}/Python/make_bdblast.py`]);
+    const python = spawn('python3', [`${__dirname}/Python/make_bdblast.py`]);
   
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
