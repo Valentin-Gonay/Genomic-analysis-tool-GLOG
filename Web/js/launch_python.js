@@ -1,12 +1,11 @@
-const express = require('express')
 const {spawn} = require('child_process');
-const app = express()
-const port = 8080
+
+
 app.get('/', (req, res) => {
  
  var dataToSend;
  // spawn new child process to call the python script
- const python = spawn('python', ['script1.py']);
+ const python = spawn('python', ['make_bdblast.py']);
  // collect data from script
  python.stdout.on('data', function (data) {
   console.log('Pipe data from python script ...');
@@ -20,22 +19,19 @@ app.get('/', (req, res) => {
  });
  
 })
-app.listen(port, () => console.log(`Example app listening on port 
-${port}!`))
 
-spawn('python', ['script1.py']);
+async function test(){
+  const python = spawn('python', ['make_bdblast.py']);
+  spawn('python', ['make_bdblast.py']);
 
+  python.stdout.on('data', function (data) {
+    console.log('Pipe data from python script ...');
+    dataToSend = data.toString();
+   });
 
-
-python.stdout.on('data', function (data) {
-  console.log('Pipe data from python script ...');
-  dataToSend = data.toString();
- });
-
-
-
-python.on('close', (code) => {
- console.log(`child process close all stdio with code ${code}`);
- // send data to browser
- res.send(dataToSend)
- });
+  python.on('close', (code) => {
+  console.log(`child process close all stdio with code ${code}`);
+  // send data to browser
+  res.send(dataToSend)
+  });
+}
