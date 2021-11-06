@@ -50,9 +50,9 @@ def exec_init():
     os=platform.system()
     if test_blastn()==0:
         if os=="Linux":
-            print(False,"")
+           sys.stdout.write(False,"")
         else:
-            print(True,"")
+            sys.stdout.write(True,"")
     else:
         a=source_config()
         print(a)
