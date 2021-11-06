@@ -8,7 +8,7 @@ def test_blastn(PATH=""):
     os=platform.system()
     type_error=0
     if PATH!="":
-        PATH+'/'
+        PATH+='/'
     if os=="Linux":
         try:
             p1=subprocess.run([PATH+"blastn", "-version"] ,capture_output=True, text=True)
@@ -28,34 +28,22 @@ def test_blastn(PATH=""):
             type_error = 2
     return type_error
 
-def source_config():
-    config=open('config.txt','r')
+def find_src_config():
+    config=open('../config.txt','r')
     for line in config:
-        if line[0:2]=="OS":
-            if line[3:len(line)-1]=="Linux":
-                OS=False
-                temp=config.readline()
-                PATH=temp[11:len(temp)]
-                if test_blastn(PATH)==0:
-                    return [OS,PATH]
-            else:
-                OS=False
-                temp=config.readline()
-                PATH=temp[11:len(temp)]
-                if test_blastn(PATH)==0:
-                    return [OS,PATH]
-    return ['Error','Error']
+        if line[0:10] == "Blast_Path":
+            PATH = line[11:len(line)]
+            if test_blastn(PATH)==0:
+                return PATH
+    return 'Error'
+
 
 def exec_init():
     os=platform.system()
-    if test_blastn()==0:
-        if os=="Linux":
-           sys.stdout.write(False,"")
-        else:
-            sys.stdout.write(True,"")
-    else:
-        a=source_config()
-        print(a)
+    a=find_src_config()
+    if os == 'Linux':
+        return [False,a]
+    elif os == 'Windows':
+        return [True,a]
 
-exec_init()
-print("a m'en branle")
+print(exec_init())
