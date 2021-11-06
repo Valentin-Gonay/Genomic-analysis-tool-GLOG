@@ -1,6 +1,7 @@
 from os import error
 import platform
 import subprocess
+import sys
 
 def test_blastn(PATH=""):
 
@@ -49,11 +50,11 @@ def exec_init():
     os=platform.system()
     if test_blastn()==0:
         if os=="Linux":
-            print(False,"")
+           sys.stdout.write(False,"")
         else:
-            print(True,"")
+            sys.stdout.write(True,"")
     else:
         a,b=source_config()
-        print(a,b)
+        sys.stdout.write(a,b)
 
 exec_init()
