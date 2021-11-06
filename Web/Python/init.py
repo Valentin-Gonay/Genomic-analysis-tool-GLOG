@@ -8,15 +8,18 @@ typeerror=0
 if os=="Linux":
     try:
         p1=subprocess.run(["blastn", "-version"] ,capture_output=True, text=True)
-        print(p1.stdout[0:5])
-
+        res=(p1.stdout[0:5])
+        if(res):
+            print('gg')
     except(error):
         print(error)
         typeerror=2
 elif "Windows" in os:
     try:
         p1=subprocess.run(["blastn", "-version"] ,capture_output=True, text=True,shell=True)
-        print(p1.stdout[0:5])
+        res=(p1.stdout[0:5])
+        if(res):
+            print('gg')
 
     except(error):
         print(error)
