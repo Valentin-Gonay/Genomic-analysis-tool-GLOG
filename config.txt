@@ -1,0 +1,6 @@
+Bienvenue sur le fichier de configuration du serveur !
+
+Blast_Path=~/bin/ncbi-blast-2.12.0+-x64-linux/ncbi-blast-2.12.0+/bin
+
+Blast_Path=C:/Program Files/NCBI/blast-2.12.0+/bin
+Blast_Path=
