@@ -32,7 +32,7 @@ pythontype()
 app.post("/launch_py", async (req, res) => {
     var dataToSend;
   
-    const python = spawn(current_python, [`${__dirname}/Python/make_bdblast.py`]);
+    const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'blastn']);
   
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
@@ -58,7 +58,7 @@ app.post("/launch_py", async (req, res) => {
 app.post("/init_py", async (req, res) => {
     var dataToSend;
   
-    const python = spawn(current_python, [`${__dirname}/Python/init.py`]);
+    const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'init']);
   
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
