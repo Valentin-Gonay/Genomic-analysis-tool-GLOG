@@ -41,9 +41,6 @@ def find_src_config():
 def exec_init():
     os=platform.system()
     a=find_src_config()
-    if os == 'Linux':
-        return [False,a]
-    elif os == 'Windows':
-        return [True,a]
-
+    return a
+    
 print(exec_init())

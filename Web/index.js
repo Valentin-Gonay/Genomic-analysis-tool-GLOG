@@ -13,6 +13,7 @@
 const fs = require('fs');
 const express = require("express");
 const {spawn} = require('child_process');
+const os =require('os')
 
 
 const app =  express ();
@@ -24,11 +25,14 @@ app.use(express.static(__dirname))
 
 app.listen(8080, () => console.log("Web server is listening... on port 8080"));
 
+let current_os=os.type()
+let current_python='python'
+pythontype()
 
 app.post("/launch_py", async (req, res) => {
     var dataToSend;
   
-    const python = spawn('python', [`${__dirname}/Python/make_bdblast.py`]);
+    const python = spawn(current_python, [`${__dirname}/Python/make_bdblast.py`]);
   
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
@@ -54,7 +58,7 @@ app.post("/launch_py", async (req, res) => {
 app.post("/init_py", async (req, res) => {
     var dataToSend;
   
-    const python = spawn('python', [`${__dirname}/Python/init.py`]);
+    const python = spawn(current_python, [`${__dirname}/Python/init.py`]);
   
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
@@ -78,7 +82,15 @@ app.post("/init_py", async (req, res) => {
 })
 //-----------------------------------------------------------------------------------//
 
-
+function pythontype(){
+    if(current_os ==="Linux"){
+        current_python=current_python+"3"
+        return
+    }
+    else{
+        return
+    }
+}
 
  
     
