@@ -1,6 +1,7 @@
 from os import error
 import platform
 import subprocess
+import sys
 
 def test_blastn(PATH=""):
 
@@ -36,13 +37,13 @@ def source_config():
                 temp=config.readline()
                 PATH=temp[11:len(temp)]
                 if test_blastn(PATH)==0:
-                    return OS,PATH
+                    return [OS,PATH]
             else:
                 OS=False
                 temp=config.readline()
                 PATH=temp[11:len(temp)]
                 if test_blastn(PATH)==0:
-                    return OS,PATH
+                    return [OS,PATH]
     return ['Error','Error']
 
 def exec_init():
@@ -53,7 +54,8 @@ def exec_init():
         else:
             print(True,"")
     else:
-        a,b=source_config()
-        print(a,b)
+        a=source_config()
+        print(a)
 
 exec_init()
+print("a m'en branle")

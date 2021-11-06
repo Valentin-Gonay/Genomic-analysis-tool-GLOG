@@ -51,7 +51,31 @@ app.post("/launch_py", async (req, res) => {
 
 })
 
+app.post("/init_py", async (req, res) => {
+    var dataToSend;
+  
+    const python = spawn('python', [`${__dirname}/Python/init.py`]);
+  
+    python.stdout.on('data', function (data) {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+    });
+  
+    python.on('close', (code) => {
+        console.log(`child process close all stdio with code ${code}`);
+        
+        // send data to browser
+        let response = {
+            "dataToSend" : dataToSend,
+            "test":"coucou_bg_des_iles 2",
+            "test_2":"test_num_3"
+        }
+        
+        res.status(200).send(JSON.stringify(response));
+    
+    });
 
+})
 //-----------------------------------------------------------------------------------//
 
 
