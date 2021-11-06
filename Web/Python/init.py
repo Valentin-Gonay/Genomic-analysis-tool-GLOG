@@ -32,7 +32,7 @@ def find_src_config():
     config=open('../config.txt','r')
     for line in config:
         if line[0:10] == "Blast_Path":
-            PATH = line[11:len(line)]
+            PATH = line[11:len(line)-1]
             if test_blastn(PATH)==0:
                 return PATH
     return 'Error'
@@ -44,5 +44,3 @@ def exec_init():
     if len(a)!=0:
         a+='/'
     return a
-
-print(exec_init())

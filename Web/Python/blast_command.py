@@ -6,4 +6,4 @@ if sys.argv[1]=='init':
     print(init.exec_init())
 
 if sys.argv[1]=='blastn':
-    print(blast_process.blastn())
+    print(blast_process.blastn(sys.argv[2],sys.argv[3]))
