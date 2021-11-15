@@ -1,9 +1,10 @@
 #input_window {
     display: flex;
-    border: 5px solid #009e89;
+    border: 3px solid #949596;
+    border-radius: 5px;
     position: absolute;
     top: 50px;
-    background: rgba(255, 255, 255, 0.445);
+    background: rgb(66, 66, 66);
     width: 40%;
     height: 360px;
 }

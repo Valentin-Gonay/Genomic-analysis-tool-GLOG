@@ -1,8 +1,9 @@
 #graph_window {
     display: flex;
     position: absolute;
-    border: 5px solid #002a9e;
-    background: rgba(255, 255, 255, 0.445);
+    border: 3px solid #949596;
+    border-radius: 5px;
+    background: rgb(66, 66, 66);
     width: 53%;
     height: 360px;
     top: 50px;
