@@ -5,10 +5,10 @@
     left: 0px;
     height: 36px;
     width: 100%;
-    background: #363636;
+    background: #3636364f;
     z-index: 1;
 }
-
+/*
 #menu_button {
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
@@ -66,18 +66,22 @@
     color: #fff;
     outline: 0;
 }
-
+*/
 /* ----------------------------------------------------------------------------- */
+
 nav {
 	margin: 0 auto 0;
-
 	position: relative;
-	width: 430px;
-	height: 36px;
 	background-color: rgb(66, 66, 66);
-	border-radius: 0px 0px 8px 8px;
 	font-size: 0;
 }
+
+#nav_top {
+    width: 430px;
+	height: 36px;
+    border-radius: 0px 0px 8px 8px;
+}
+
 nav a {
 	line-height: 36px;
 	height: 100%;
