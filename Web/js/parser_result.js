@@ -1,4 +1,4 @@
-let text = `BLASTN 2.12.0+
+/*let text = `BLASTN 2.12.0+
 
 
 Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
@@ -10019,59 +10019,47 @@ Effective search space used: 4417460948
 
 Matrix: blastn matrix 1 -2
 Gap Penalties: Existence: 0, Extension: 2.5
-`
-  
-let resu = {
-  /*
-  query{
-    title
-    length
-  }
-  alignment1{
-    title : ENA..
-    score :
-    e_value :
-    identities :
-    pIdentities :
-    gaps :
-    Pgaps :
-    strand :
+`*/
+
+function parser_res(text) {
+    let resu = {
+    query : {},
+    alignements : {}
+  };
+
+  let tab = text.split('\n');
+  let count = 0;
+  let temp = '';
+  let alignement = {};
+  for (let i = 0; i < tab.length; i++){
+
+    // Query
+    if (tab[i].startsWith('Query=')){
+      resu.query.title = tab[i].slice(7,30);
+    }
+    if (tab[i].startsWith('Length=') && temp === ''){
+      resu.query.length = tab[i].match(/\d+/)[0];
+    }
+
+    // alignments
+    if (tab[i].startsWith('>')){
+      count ++;
+      temp = 'alignement_'+count;
+      resu.alignements[temp] ={};
+      resu.alignements[temp].title = tab[i].slice(1,24);
+    }
+    if (tab[i].startsWith('Length=') && temp !== ''){
+      resu.alignements[temp].length = tab[i].match(/\d+/)[0];  //Laisse de cote 
+      resu.alignements[temp].score = tab[i+2].match(/\d+/)[0,0];  //Graph 1
+      resu.alignements[temp].e_value = tab[i+2].match(/\d+\.\d+/)[0].replace('%','');  //Graph 1
+      resu.alignements[temp].identities = tab[i+3].match(/\d+\/\d+/)[0,0];  //Graph 2(dans label)
+      resu.alignements[temp].pIdentities = tab[i+3].match(/\d+\%/)[0,0].replace('%',''); //Graph 2
+      resu.alignements[temp].gaps = tab[i+3].match(/(?<=Gaps = ).*(?=\s)/)[0];  //Graph 2(dans label)
+      resu.alignements[temp].pGaps = tab[i+3].match(/\(([^()]*)\)$/)[0].replace('(','').replace('%)',''); // Graph 2      REVOIR one lign
+    }
+
   }
 
-  */
-};
-
-let tab = text.split('\n');
-let count = 0;
-let temp = '';
-for (let i = 0; i < tab.length; i++){
-
-  // Query
-  if (tab[i].startsWith('Query=')){
-    resu['query']={};
-    resu.query.title = tab[i].slice(7,29);
-  }
-  if (tab[i].startsWith('Length=') && temp === ''){
-    resu['query'].length = tab[i].match(/\d+/)[0];
-  }
-
-  // alignments
-  if (tab[i].startsWith('>')){
-    count ++;
-    temp = 'alignement_'+count;
-    resu[temp] ={};
-    resu[temp].title = tab[i].slice(7,29);
-  }
-  if (tab[i].startsWith('Length=') && temp !== ''){
-    resu[temp].length = tab[i].match(/\d+/)[0];
-    resu[temp].score = tab[i+2].match(/\d+/)[0,0];
-    resu[temp].e_value = tab[i+2].match(/\d+\.\d+/)[0];
-    resu[temp].identities = tab[i+3].match(/\d+\/\d+/)[0,0];
-    resu[temp].pIdentities = tab[i+3].match(/\d+\%/)[0,0];
-    resu[temp].gaps = tab[i+3].match(/(?<=Gaps = ).*(?=\s)/)[0];
-    resu[temp].pGaps = tab[i+3].match(/\(([^()]*)\)$/)[0];
-  }
-
+  //console.log(resu);
+  return resu;
 }
-
-console.log(resu);
