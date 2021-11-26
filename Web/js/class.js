@@ -1,6 +1,5 @@
 // CECI est le fichier de classes
 
-
 class Sequence{
     constructor(sequence, ID){
         this.Sequence = sequence;
@@ -17,21 +16,23 @@ class Project {
     loadsequence(){
         var objct=this;
         fetch('http://localhost:8080/Data/BD/test.fsa').then((function(response){
-        response.text().then((function(text){
-            let txt=text.split('>').filter(e=>e)
-            txt=txt.map(e=>{
-                e='>'+e;
-                return [e.substring(0, e.indexOf('\n')), e.substring(e.indexOf('\n'),e.length)]
-            })
-            let sequence=txt.map((e)=>{
-                console.log(e)
-                return new Sequence(e[1]),e[0]})
-            objct.sequences=sequence
-        }))
-    }))
+        		response.text().then((function(text){
+		            let txt=text.split('>').filter(e=>e)
+		            txt=txt.map(e=>{
+		                e='>'+e;
+		                return [e.substring(0, e.indexOf('\n')), e.substring(e.indexOf('\n'),e.length)]
+            		})
+            		let sequence=txt.map((e)=>{
+	                return new Sequence(e[1]),e[0]
+								})
+            		objct.sequences=sequence;
+        		}))
+    		}))
     }
-    loadinputseq(){
-//
+    loadRawinput(){
+			var objct=this;
+			let sequences = updateSequences();
+			objct.sequences = sequences;
     }
     getSeq(){
         return this.sequences
@@ -46,8 +47,6 @@ class User{
 }
 
 
-
-
 class Main{
     constructor(user,project){
         this.user = user;
@@ -58,5 +57,5 @@ class Main{
         let b=a.getSeq()
         console.log(b)
     }
-   
+
 }

@@ -1,19 +1,29 @@
-function getText() {
+function getTextFromInput() {
   // Selecting the input element and get its value
   let inputVal = document.getElementById("seq").value;
   return(inputVal);
 }
 
-function displayValue(value){
-      val = getText();
-      console.log("val: ", val);
+function updateSequences(){
+	//extracts sequences from fasta, then returns them as
+	text = getTextFromInput();
+	// function(text){
+			let txt=text.split('>').filter(e=>e)
+			txt=txt.map(e=>{
+					e='>'+e;
+					return [e.substring(0, e.indexOf('\n')), e.substring(e.indexOf('\n'),e.length)]
+			})
+			let sequence=txt.map((e)=>{
+				var seq = e[1].trim();
+				var ID = e[0];
+				return new Sequence(seq,ID)
+			})
+			return sequence;
+	// }
+
 }
 
-
-
-
 const pasteText = (txt) => document.querySelector('#seq').innerHTML = txt;
-
 
 const pasteFileIntoTextArea = (event) => {
   console.log("hello");
