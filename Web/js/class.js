@@ -79,7 +79,7 @@ class Alignment {
 
 }
 
-class Resu {
+class Resultat {
     constructor(alignment,statistics){
         this.alignment = alignment;
         this.statistics = statistics;

@@ -1,5 +1,6 @@
 const graph = document.getElementById("graph").getContext("2d");
 
+/*
 let text = `BLASTN 2.12.0+
 
 
@@ -10022,6 +10023,7 @@ Effective search space used: 4417460948
 Matrix: blastn matrix 1 -2
 Gap Penalties: Existence: 0, Extension: 2.5
 `
+*/
 
 const crea_graph1 = (txt) => {
   let class_resu = parser_res(txt);

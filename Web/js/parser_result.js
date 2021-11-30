@@ -10043,7 +10043,7 @@ function parser_res(text) {
   for (let i = 0; i < tab.length; i++){
 
     // Query
-    if (tab[i].startsWith('Query=')){
+    if (tab[i].startsWith('Query=') && temp === ''){
       query.title = tab[i].slice(7,30);
     }
     if (tab[i].startsWith('Length=') && temp === ''){
@@ -10065,6 +10065,9 @@ function parser_res(text) {
       alignements[temp].pIdentities = tab[i+3].match(/\d+\%/)[0,0].replace('%',''); //Graph 2
       alignements[temp].gaps = tab[i+3].match(/(?<=Gaps = ).*(?=\s)/)[0];  //Graph 2(dans label)
       alignements[temp].pGaps = tab[i+3].match(/\(([^()]*)\)$/)[0].replace('(','').replace('%)',''); // Graph 2      REVOIR one lign
+    }
+    if (tab[i].startsWith('Query') && temp !== ''){
+        
     }
 
   }
