@@ -63,6 +63,7 @@ class Main{
 
     loadinput(){
         this.CurrentProject.loadRawinput()
+        console.log('CCCAAAAACCCCCCCCAAAAAA')
     }
 
 }
