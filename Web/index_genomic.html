@@ -52,9 +52,13 @@
 
     <!-- window for displaying graph -->
     <div id = graph_window>
-        <div id = menu_deroul> 
-            <button type = "deroulant" id = "deroulant", onclick = ""> général </button>
-        </div>
+        <nav id = menu_deroulant>
+            <h2>Choix statistique d'alignements</h2>
+             <input id="toggle" type="checkbox" checked>
+          <ul id = bouton_deroulant>
+            <li><a onclick = "" >Général</a></li>
+          </ul>
+       </nav>
         <canvas id="graph" height="360px"></canvas>
         <!--<canvas id="query_length" height="360px"></canvas>
          <canvas id="query_cover" height="360px"></canvas>
