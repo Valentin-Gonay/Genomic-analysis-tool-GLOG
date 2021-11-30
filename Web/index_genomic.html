@@ -44,7 +44,7 @@
             <textarea id = "seq" class = "reset" rows = "5" cols = "80" name = "QUERY" suggesthint></textarea>
             <label for="avatar"></label>
             <input type="file"id="avatar" name="avatar" accept=".fasta" onchange="pasteFileIntoTextArea()">
-            <button type="button" onclick="main.loadinput();">Get Value</button>
+            <button type="button" id="getval" onclick="main.loadinput();">Get Value</button>
         </div>
     </div>
 
@@ -91,7 +91,7 @@
         </nav>
     </div>
 
-
+</body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <script src="js/loading.js"></script>
     <script src="js/parser_result.js"></script>
