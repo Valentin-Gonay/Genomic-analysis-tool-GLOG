@@ -67,10 +67,10 @@ class Main{
 //sequence_1 et sequence_2 des objets Sequence
 //alignment = alignement parse depuis le resu.txt
 class Alignment {
-    constructor(sequence_Q,sequence_2,alignment,stat){
+    constructor(sequence_Q,sequence_2,alignment_display,stat){
         this.sequence_Q = sequence_Q;
         this.sequence_2 = sequence_2;
-        this.alignment = alignment;
+        this.alignment_display = alignment_display;
         this.stat = stat;
     }  
 
