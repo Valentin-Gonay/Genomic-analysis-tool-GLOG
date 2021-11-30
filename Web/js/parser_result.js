@@ -10040,6 +10040,9 @@ function parser_res(text) {
   let temp = '';
   let query = {};
   let alignements = {};
+
+  let alignement_window = document.getElementById('sequence_window_text'); 
+
   for (let i = 0; i < tab.length; i++){
 
     // Query
@@ -10056,6 +10059,7 @@ function parser_res(text) {
       temp = 'alignement_'+count;
       alignements[temp] ={};
       alignements[temp].title = tab[i].slice(1,24);
+      alignements[temp].seq = [];
     }
     if (tab[i].startsWith('Length=') && temp !== ''){
       alignements[temp].length = tab[i].match(/\d+/)[0];  //Laisse de cote 
@@ -10067,12 +10071,46 @@ function parser_res(text) {
       alignements[temp].pGaps = tab[i+3].match(/\(([^()]*)\)$/)[0].replace('(','').replace('%)',''); // Graph 2      REVOIR one lign
     }
     if (tab[i].startsWith('Query') && temp !== ''){
-        
+        //idee : parcourir la ligne : 
+        //if premier '-' => <span id = "gap">-...
+        //if dernier '-' => </span>ATGCGT...
+
+        let gap = false;
+        let miss_match = false;
+
+        //gestion des gaps et miss match => A VOS RISQUE ET PERILS
+        // tab_1 = tab[i].split('');
+        // tab_2 = tab[i+2].split('');
+        // for (let car = 0 ; car < tab[i].length ; car++){
+        //     let caractere_1 = tab[i][car];
+        //     let caractere_2 = tab[i+2][car];
+        //     if (caractere_1 != caractere_2 && caractere_1 != '-' && caractere_2 != '-'){
+        //         tab_1[car] = "<span id = 'sequence_miss_match'>"+caractere_1+"</span>";
+        //         tab_2[car] = "<span id = 'sequence_miss_match'>"+caractere_2+"</span>";
+        //     }
+        //     if(caractere_1 == '-' || caractere_2 == '-'){
+        //         tab_1[car] = "<span id = 'sequence_gap'>"+caractere_1+"</span>";
+        //         tab_2[car] = "<span id = 'sequence_gap'>"+caractere_2+"</span>";
+        //     }
+        // }
+        // tab_1 = tab_1.toString();
+        // tab_2 = tab_2.toString();
+
+
+        //nécessaire pour garder le texte aligné dans le html ni vue ni keunu
+        let query_line = tab_1.replaceAll(' ',"<span id = 'sequence_dot'>.</span>");
+        let pipe_line = tab[i+1].replaceAll(' ',"<span id = 'sequence_dot'>.</span>");
+        let sequence_line = tab_2.replaceAll(' ',"<span id = 'sequence_dot'>.</span>");
+
+        alignements[temp].seq.push([query_line,pipe_line,sequence_line+'<br>']);
     }
 
   }
   const resu = new Resu(query, alignements);
-  //console.log(resu);
+  console.log(resu);
+
+  //ajout au html
+  alignement_window.innerHTML= resu.align.alignement_4.seq.toString().replaceAll(',','<br>');
   return resu;
 }
 

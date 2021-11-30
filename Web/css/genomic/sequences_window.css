@@ -3,8 +3,28 @@
     border: 3px solid #949596;
     border-radius: 5px;
     position: absolute;
-    top: 430px;
+    top: 70px;
     background: rgb(66, 66, 66);
     width: calc(98% - 8px);
-    height: 360px;
+    height: calc(100% - 150px);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+}
+
+#sequence_window_text{
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: aliceblue;
+}
+
+#sequence_dot{
+    color:rgb(66, 66, 66);
+}
+
+#sequence_gap{
+    color:darkgoldenrod;
+}
+
+#sequence_miss_match{
+    color:red;
 }
