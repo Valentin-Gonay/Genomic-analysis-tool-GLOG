@@ -13,6 +13,7 @@
     <title>Genomic Tool</title>
 
     <link rel="stylesheet" href="css/top_menu.css">
+    <link rel="stylesheet" href="css/bot_menu.css">
     <link rel="stylesheet" href="css/page_style.css">
     <link rel="stylesheet" href="css/genomic/input_window.css">
     <link rel="stylesheet" href="css/genomic/graph_window.css">
@@ -27,27 +28,14 @@
 <body>
     <!-- menu for heading bar -->
     <div id = top_menu>
-        <!-- home -->
-        <div id = menu_button class = btn onclick="window.location.href = 'index.html'">
-            Home
-        </div>
-
-        <!-- metabolic -->
-        <div id = menu_button class = btn onclick="window.location.href = 'index_metabolic.html'">
-            Metabolic
-        </div>
-
-        <!-- genomic -->
-        <div id = menu_button class = selected onclick="location.reload()">
-            Genomic
-        </div>
-
-        <!-- proteomic -->
-        <div id = menu_button class = btn onclick="window.location.href = 'index_proteomic.html'">
-            Proteomic
-        </div>
+        <nav id="nav_top">
+            <a href="#" onclick="window.location.href = 'index.html'">HOME</a>
+            <a href="#" onclick="window.location.href = 'index_metabolic.html'">METABOLIC</a>
+            <a href="#" onclick="window.location.href = 'index_genomic.html'">GENOMIC</a>
+            <a href="#" onclick="window.location.href = 'index_proteomic.html'">PROTEOMIC</a>
+            <div class="animation start-genomic"></div>
+        </nav>
     </div>
-
 
     <!-- window input sequence -->
     <div id = input_window>
@@ -63,6 +51,13 @@
 
     <!-- window for displaying graph -->
     <div id = graph_window>
+        <nav id = menu_deroulant>
+            <h2>Choix statistique d'alignements</h2>
+             <input id="toggle" type="checkbox" checked>
+          <ul id = bouton_deroulant>
+            <li><a onclick = "" >Général</a></li>
+          </ul>
+       </nav>
         <canvas id="graph" height="360px"></canvas>
         <!--<canvas id="query_length" height="360px"></canvas>
          <canvas id="query_cover" height="360px"></canvas>
@@ -78,13 +73,34 @@
     </div>
 
 
+    <div id = bot_menu>
+        <nav id="nav_bot">
+            <b href="#" id="menu_input">
+                <img class="icon" src="figures/play-button.png" alt="icone">
+                INPUT
+            </b>
+            <b href="#" id="menu_sequence">
+                <img class="icon" src="figures/align.png" alt="icone">
+                SEQUENCE
+            </b>
+            <b href="#" id="menu_graph">
+                <img class="icon" src="figures/pie-chart.png" alt="icone">
+                GRAPH
+            </b>
+            <div id='start_bot' class="animation start-input"></div>
+        </nav>
+    </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <script src="js/loading.js"></script>
+    <script src="js/parser_result.js"></script>
     <script src= "js/graph.js"></script>
     <script src="js/get_input.js"></script>
     <script src="js/launch_python.js"></script>
     <script src ="js/class.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/js_index.js"></script>
 
 </body>
 

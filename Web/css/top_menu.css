@@ -5,10 +5,10 @@
     left: 0px;
     height: 36px;
     width: 100%;
-    background: rgb(66, 66, 66);
+    background: #3636364f;
     z-index: 1;
 }
-
+/*
 #menu_button {
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
 }
@@ -65,4 +65,74 @@
     
     color: #fff;
     outline: 0;
+}
+*/
+/* ----------------------------------------------------------------------------- */
+
+nav {
+	margin: 0 auto 0;
+	position: relative;
+	background-color: rgb(66, 66, 66);
+	font-size: 0;
+}
+
+#nav_top {
+    width: 430px;
+	height: 36px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+nav a {
+	line-height: 36px;
+	height: 100%;
+	font-size: 15px;
+	display: inline-block;
+	position: relative;
+	z-index: 1;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+nav .animation {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	z-index: 0;
+	transition: all .5s ease 0s;
+	border-radius: 8px;
+}
+a:nth-child(1) {
+	width: 100px;
+}
+a:nth-child(2) {
+	width: 110px;
+}
+a:nth-child(3) {
+	width: 110px;
+}
+a:nth-child(4) {
+	width: 110px;
+}
+
+nav .start-home, a:nth-child(1):hover~.animation {
+	width: 100px;
+	left: 0;
+	background-color: #949596;
+}
+nav .start-metabolic, a:nth-child(2):hover~.animation {
+	width: 110px;
+	left: 100px;
+	background-color: #949596;
+}
+nav .start-genomic, a:nth-child(3):hover~.animation {
+	width: 110px;
+	left: 210px;
+	background-color: #949596;
+}
+nav .start-proteomic, a:nth-child(4):hover~.animation {
+	width: 110px;
+	left: 320px;
+	background-color: #949596;
 }

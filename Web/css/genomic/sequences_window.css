@@ -1,9 +1,10 @@
 #sequence_window {
-    display: flex;
-    border: 5px solid #9e4700;
+    display: none;
+    border: 3px solid #949596;
+    border-radius: 5px;
     position: absolute;
     top: 430px;
-    background: rgba(255, 255, 255, 0.445);
+    background: rgb(66, 66, 66);
     width: calc(98% - 8px);
     height: 360px;
 }
