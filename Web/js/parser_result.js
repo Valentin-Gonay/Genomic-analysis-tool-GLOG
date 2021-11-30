@@ -1,4 +1,4 @@
-/*let text = `BLASTN 2.12.0+
+let text = `BLASTN 2.12.0+
 
 
 Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
@@ -10019,47 +10019,58 @@ Effective search space used: 4417460948
 
 Matrix: blastn matrix 1 -2
 Gap Penalties: Existence: 0, Extension: 2.5
-`*/
+`
+
+class Resu {
+    constructor (query,alignements){
+        this.query = query;
+        this.align = alignements;
+    }
+
+    getAlignements (){return this.align;}
+
+    getQuery (){return this.query;}
+
+}
 
 function parser_res(text) {
-    let resu = {
-    query : {},
-    alignements : {}
-  };
 
   let tab = text.split('\n');
   let count = 0;
   let temp = '';
-  let alignement = {};
+  let query = {};
+  let alignements = {};
   for (let i = 0; i < tab.length; i++){
 
     // Query
     if (tab[i].startsWith('Query=')){
-      resu.query.title = tab[i].slice(7,30);
+      query.title = tab[i].slice(7,30);
     }
     if (tab[i].startsWith('Length=') && temp === ''){
-      resu.query.length = tab[i].match(/\d+/)[0];
+      query.length = tab[i].match(/\d+/)[0];
     }
 
     // alignments
     if (tab[i].startsWith('>')){
       count ++;
       temp = 'alignement_'+count;
-      resu.alignements[temp] ={};
-      resu.alignements[temp].title = tab[i].slice(1,24);
+      alignements[temp] ={};
+      alignements[temp].title = tab[i].slice(1,24);
     }
     if (tab[i].startsWith('Length=') && temp !== ''){
-      resu.alignements[temp].length = tab[i].match(/\d+/)[0];  //Laisse de cote 
-      resu.alignements[temp].score = tab[i+2].match(/\d+/)[0,0];  //Graph 1
-      resu.alignements[temp].e_value = tab[i+2].match(/\d+\.\d+/)[0].replace('%','');  //Graph 1
-      resu.alignements[temp].identities = tab[i+3].match(/\d+\/\d+/)[0,0];  //Graph 2(dans label)
-      resu.alignements[temp].pIdentities = tab[i+3].match(/\d+\%/)[0,0].replace('%',''); //Graph 2
-      resu.alignements[temp].gaps = tab[i+3].match(/(?<=Gaps = ).*(?=\s)/)[0];  //Graph 2(dans label)
-      resu.alignements[temp].pGaps = tab[i+3].match(/\(([^()]*)\)$/)[0].replace('(','').replace('%)',''); // Graph 2      REVOIR one lign
+      alignements[temp].length = tab[i].match(/\d+/)[0];  //Laisse de cote 
+      alignements[temp].score = tab[i+2].match(/\d+/)[0,0];  //Graph 1
+      alignements[temp].e_value = tab[i+2].match(/\d+\.\d+/)[0].replace('%','');  //Graph 1
+      alignements[temp].identities = tab[i+3].match(/\d+\/\d+/)[0,0];  //Graph 2(dans label)
+      alignements[temp].pIdentities = tab[i+3].match(/\d+\%/)[0,0].replace('%',''); //Graph 2
+      alignements[temp].gaps = tab[i+3].match(/(?<=Gaps = ).*(?=\s)/)[0];  //Graph 2(dans label)
+      alignements[temp].pGaps = tab[i+3].match(/\(([^()]*)\)$/)[0].replace('(','').replace('%)',''); // Graph 2      REVOIR one lign
     }
 
   }
-
+  const resu = new Resu(query, alignements);
   //console.log(resu);
   return resu;
 }
+
+//parser_res(text);

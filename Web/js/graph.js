@@ -10024,8 +10024,8 @@ Gap Penalties: Existence: 0, Extension: 2.5
 `
 
 const crea_graph1 = (txt) => {
-  let obj_data = parser_res(txt);
-  console.log(obj_data);
+  let class_resu = parser_res(txt);
+  console.log(class_resu);
 
   let data_graph = {
     labels : [],
@@ -10049,16 +10049,22 @@ const crea_graph1 = (txt) => {
     ]
   }
 
-  //data_graph.labels.push(obj_data.query.title);       FAIRE AFFICHER QUERY QUELQUE PART !!!
+  //data_graph.labels.push(class_resu.query.title);       FAIRE AFFICHER QUERY QUELQUE PART !!!
   
-  for (let align in obj_data.alignements){
-    console.log(obj_data.alignements[align]);
-    data_graph.labels.push(obj_data.alignements[align].title);
+  for (let align in class_resu.alignements){
+    console.log(class_resu
+.alignements[align]);
+    data_graph.labels.push(class_resu
+.alignements[align].title);
     
-    data_graph.datasets[0].data.push(obj_data.alignements[align].score);
-    data_graph.datasets[1].data.push(obj_data.alignements[align].e_value);
-    data_graph.datasets[2].data.push(obj_data.alignements[align].pGaps);
-    data_graph.datasets[3].data.push(obj_data.alignements[align].pIdentities);
+    data_graph.datasets[0].data.push(class_resu
+.alignements[align].score);
+    data_graph.datasets[1].data.push(class_resu
+.alignements[align].e_value);
+    data_graph.datasets[2].data.push(class_resu
+.alignements[align].pGaps);
+    data_graph.datasets[3].data.push(class_resu
+.alignements[align].pIdentities);
   }
 
   console.log(data_graph);
