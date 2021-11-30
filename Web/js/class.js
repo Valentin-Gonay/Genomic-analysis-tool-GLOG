@@ -28,11 +28,9 @@ class Project {
             		objct.sequences=sequence;
         		}))
     		}))
-    }
+    }  
     loadRawinput(){
-			var objct=this;
-			let sequences = updateSequences();
-			objct.sequences = sequences;
+			this.inputsequence = updateSequences();
     }
     getSeq(){
         return this.sequences
@@ -56,6 +54,11 @@ class Main{
         let a=this.CurrentProject
         let b=a.getSeq()
         console.log(b)
+    }
+    getproject(){return this.CurrentProject}
+
+    loadinput(){
+        this.CurrentProject.loadRawinput()
     }
 
 }
