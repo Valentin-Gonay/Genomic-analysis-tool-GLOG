@@ -10079,8 +10079,8 @@ function parser_res(text) {
         let miss_match = false;
 
         //gestion des gaps et miss match => A VOS RISQUE ET PERILS
-        // tab_1 = tab[i].split('');
-        // tab_2 = tab[i+2].split('');
+        tab_1 = tab[i];
+        tab_2 = tab[i+2];
         // for (let car = 0 ; car < tab[i].length ; car++){
         //     let caractere_1 = tab[i][car];
         //     let caractere_2 = tab[i+2][car];
@@ -10098,6 +10098,7 @@ function parser_res(text) {
 
 
         //nécessaire pour garder le texte aligné dans le html ni vue ni keunu
+
         let query_line = tab_1.replaceAll(' ',"<span id = 'sequence_dot'>.</span>");
         let pipe_line = tab[i+1].replaceAll(' ',"<span id = 'sequence_dot'>.</span>");
         let sequence_line = tab_2.replaceAll(' ',"<span id = 'sequence_dot'>.</span>");
