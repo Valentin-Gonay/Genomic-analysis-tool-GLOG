@@ -18,10 +18,14 @@ nav h2 {
 nav:hover h2{
   transform: translateY(-2px);
   box-shadow: 2px 2px 5px -1px rgba(0,0,0,.35);
+  color: ivory;
+
  }
 nav:hover:active h2{
   transform: translateY(10px);
   box-shadow: 0px -1px 2px 0px rgba(0,0,0,.35);
+  color: ivory;
+
  }
 
 input {
