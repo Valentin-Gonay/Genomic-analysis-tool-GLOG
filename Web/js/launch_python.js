@@ -37,4 +37,3 @@ async function write_py_node(main){
   console.log(test);
 }
 
-launch_init()

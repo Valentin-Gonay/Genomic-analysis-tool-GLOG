@@ -1,5 +1,6 @@
 const main = new Main(new User(), new Project());
 main.getSeqfrom();
+launch_init()
 const btninput = document.getElementById('getval')
 const Loadinput = (e) => {
     main.loadinput()

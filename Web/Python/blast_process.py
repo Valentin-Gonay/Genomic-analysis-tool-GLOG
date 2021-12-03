@@ -16,7 +16,7 @@ def writeinput(PATH,title,data):
     with open('Data/data/input.fasta','w') as f:
         f.write('>',title)
         f.write(data)
-        f.close
+        f.close()
         return
 
     
