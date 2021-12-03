@@ -14,7 +14,8 @@ def blastn(PATH,OS):
 
 def writeinput(title,data):
     with open('Data/data/input.fasta','w') as f:
-        f.write('>',title)
+        towrite=title+'\n'
+        f.write(towrite)
         f.write(data)
         f.close()
         return
