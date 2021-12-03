@@ -98,7 +98,30 @@ function pythontype(){
 
 
     
+app.post("/write_py", async (req, res) => {
+    var dataToSend;
+  
+    const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'blastn',req.body.title, req.body.data]);
+  
+    python.stdout.on('data', function (data) {
+        console.log('Pipe data from python script ...');
+        dataToSend = data.toString();
+    });
+  
+    python.on('close', (code) => {
+        console.log(`child process close all stdio with code ${code}`);
+        
+        // send data to browser
+        let response = {
+            "dataToSend" : 'ok',
+            "test":"lol",
+        }
+        
+        res.status(200).send(JSON.stringify(response));
+    
+    });
 
+})
 
 
 
