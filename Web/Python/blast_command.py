@@ -9,4 +9,4 @@ if sys.argv[1]=='blastn':
     print(blast_process.blastn(sys.argv[2],sys.argv[3]))
 
 if sys.argv[1]=='input':
-    blast_process.writeinput(sys.argv[3],sys.argv[3])
+    blast_process.writeinput(sys.argv[2],sys.argv[3])
