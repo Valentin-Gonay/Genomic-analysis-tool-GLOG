@@ -39,3 +39,8 @@ const pasteFileIntoTextArea = (event) => {
   }
   reader.readAsText(f);
 };
+
+const test_input=()=>{
+	text = getTextFromInput();
+	return text.indexOf('>')==0
+}
