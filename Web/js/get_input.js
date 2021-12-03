@@ -18,7 +18,7 @@ function updateSequences(){
 				var ID = e[0];
 				return new Sequence(seq,ID)
 			})
-			return sequence;
+			return sequence[0];
 	// }
 
 }
