@@ -24,3 +24,10 @@ input,
 label {
     margin: .4rem 0;
 }
+#avatar{
+    position: absolute;
+    position: absolute;
+    top: 160px;
+    left: 80px;
+    opacity: 1;
+}
