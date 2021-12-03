@@ -101,7 +101,7 @@ function pythontype(){
 app.post("/write_py", async (req, res) => {
     var dataToSend;
   
-    const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'blastn',req.body.title, req.body.data]);
+    const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'input',req.body.title, req.body.data]);
   
     python.stdout.on('data', function (data) {
         console.log('Pipe data from python script ...');
