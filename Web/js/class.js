@@ -105,3 +105,15 @@ class Resultat {
         }));
     }
 }
+
+class Resu {
+    constructor (query,alignements){
+        this.query = query;
+        this.align = alignements;
+    }
+
+    getAlignements (){return this.align;}
+
+    getQuery (){return this.query;}
+
+}

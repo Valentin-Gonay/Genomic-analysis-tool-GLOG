@@ -10021,18 +10021,6 @@ Matrix: blastn matrix 1 -2
 Gap Penalties: Existence: 0, Extension: 2.5
 `
 
-class Resu {
-    constructor (query,alignements){
-        this.query = query;
-        this.align = alignements;
-    }
-
-    getAlignements (){return this.align;}
-
-    getQuery (){return this.query;}
-
-}
-
 function parser_res(text) {
 
   let tab = text.split('\n');
