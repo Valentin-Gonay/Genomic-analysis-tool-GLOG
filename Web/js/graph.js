@@ -61,11 +61,6 @@ const crea_graph1 = (class_resu) => {
   return data_graph;
 }
 
-
-const graph_align = (obj) => {
-    console.log("HELLO MA COUILLE");
-}
-
 /*var data = {
   labels : ['Data1', 'Data2', 'Data3', 'Data4'],
   datasets: [
@@ -10117,10 +10112,11 @@ Gap Penalties: Existence: 0, Extension: 2.5
     let tab = [];
     let query = resu.query.title;
     for (let i = 0 ; i < Object.keys(resu.align).length ; i ++){
-      //let fct = 'graph_align(' + resu.align[i] + ')';
+      let fct = 'createGraphPage(\'' + Object.keys(resu.align)[i] + '\', resu)';
+      console.log(fct);
       let button = document.createElement('li');
       let titre_btn = document.createElement('a');
-      //button.setAttribute('onclick', fct);
+      button.setAttribute('onclick', fct);
       titre_btn.textContent = query + ' - ' + resu.align[Object.keys(resu.align)[i]].title;
       titre_btn.style.width = '600px';
       let ul = document.getElementById('bouton_deroulant');
@@ -10130,6 +10126,130 @@ Gap Penalties: Existence: 0, Extension: 2.5
     }
 };
 
+function createGraphPage(alignement, object){
+    console.info(object.align[alignement]);
+
+    const graph_length = document.getElementById("graph_length").getContext("2d");
+    const graph_identities = document.getElementById("graph_identities").getContext("2d");
+    const graph_gap = document.getElementById("graph_gap").getContext("2d");
+
+    let data_graphs = crea_dataAlign(object.align[alignement], object);
+
+    var config_graphLength = {
+      type: 'bar',
+      data: data_graphs[0],
+      options : {
+        scales:{
+          x:{
+            ticks: {
+              color:'#FFFFFF',
+            },
+            grid: {
+              color:'#FFFFFF',
+            }
+          },
+          y:{
+            ticks: {
+              color:'#FFFFFF',
+            },
+            grid:{
+              color:'#FFFFFF',
+            }
+          },
+        },
+        title: {
+          display: true,
+          text: 'Bar Chart Sequence Length'
+        }
+      }
+    };
+
+    var config_graphIdent = {
+      type: 'pie',
+      data: data_graphs[1],
+      options : {
+        title: {
+          display: true,
+          text: 'Pie Chart Identities'
+        }
+      }
+    };
+
+    var config_graphGap = {
+      type: 'pie',
+      data: data_graphs[2],
+      options : {
+        title: {
+          display: true,
+          text: 'Pie Chart Gaps'
+        }
+      }
+    };
+    
+    let graph_L = new Chart(graph_length,config_graphLength);
+    let graph_I = new Chart(graph_identities,config_graphIdent);
+    let graph_G = new Chart(graph_gap,config_graphGap);
+
+    document.getElementById("graph_length").style.display =  'flex';
+    document.getElementById("graph_identities").style.display =  'flex';
+    document.getElementById("graph_gap").style.display =  'flex';
+}
+
+function crea_dataAlign(alignement, object) {
+  let data = [];
+
+  let data_graphLength = {
+    labels : ['Query', 'Alignement'],
+    datasets : [
+      {
+        label : 'LENGTH',
+        data : [],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          '#814cfb80',
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          '#814cfb',
+        ],
+        borderWidth: 1
+      }
+    ]
+  }
+  data_graphLength.datasets[0].data.push(object.query.length);
+  data_graphLength.datasets[0].data.push(alignement.length);
+  data.push(data_graphLength);
+
+  let data_graphIdent = {
+    labels : ['% Identities','% Difference'],
+    datasets : [
+      {
+        label : '% Identities',
+        data : [],
+        backgroundColor:['#b4e98b80','#ffffff00'],
+      }
+    ]
+  }
+  data_graphIdent.datasets[0].data.push(alignement.pIdentities);
+  data_graphIdent.datasets[0].data.push(100 - alignement.pIdentities);
+  data.push(data_graphIdent);
+
+  let data_graphGap = {
+    labels : ['% Gaps',''],
+    datasets : [
+      {
+        label : '% Gap',
+        data : [],
+        backgroundColor:['#61c2cc80','#ffffff00'],
+      }
+    ]
+  }
+  data_graphGap.datasets[0].data.push(alignement.pGaps);
+  data_graphGap.datasets[0].data.push(100 - alignement.pGaps);
+  data.push(data_graphGap);
+
+  return data;
+}
 
 /*const query_length = document.getElementById("query_length").getContext("2d");
 const pourcent_identity = document.getElementById("pourcent_identity").getContext("2d");

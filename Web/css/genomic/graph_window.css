@@ -18,48 +18,23 @@
     position: absolute;
 }
 
-/*#query_length {
-    background-color: rgb(251, 251, 251);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    z-index: 2;
+/*#graph_length {
+    top: 50px;
+    border: 1px solid #949596;
+    height: 40%;
+    width: calc((100% - 20px)/2);
+    left : calc(15px + (100% - 20px)/2);
 }
 
-#query_cover {
-    background-color: rgb(251, 251, 251);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    z-index: 1;
+#graph_indentities {
+    top: calc(40% + 100px);
+    border: 1px solid #949596;
+    width: calc((100% - 20px)/2);
 }
 
-#total_score {
-    background-color: rgb(251, 251, 251);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    z-index: 2;
-}
-
-#e_value {
-    background-color: rgb(251, 251, 251);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    z-index: 2;
-}
-
-#pourcent_identity {
-    background-color: rgb(251, 251, 251);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    z-index: 2;
-}
-*/
+#graph_gap {
+    top: calc(40% + 100px);
+    border: 1px solid #949596;
+    width: calc((100% - 20px)/2);
+    left : calc(15px + (100% - 20px)/2);
+}*/
