@@ -96,18 +96,16 @@ class Resultat {
             }))
     }
 
-    getAlignment(sequence_Q,sequence_2){
+    getAlignment(){
         var objct = this;
-        let ID_Q = sequence_Q.ID; //pas vraiement besoin de l'id du query pour parse
-        let ID_2 = sequence_2.ID;
+        
         fetch('http://localhost:8080/Data/data/resu.txt').then((function(response){
         		response.text().then((function(text){
                     //Split on '>' + suppression des valeurs vides ou undefined
                     let txt = text.split('>').filter(e=>e)
                     txt=txt.map(e=>{
                         let line = txt.split('\n');
-                        //
-                        (ID_2.include(line[0]))
+                        
                     });
             // chercher le ID de resu dans sequence.ID
             }));

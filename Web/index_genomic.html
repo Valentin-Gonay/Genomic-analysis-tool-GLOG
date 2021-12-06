@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="css/genomic/sequences_window.css">
     <link rel="stylesheet" href="css/dropdown_menu.css">
 
+    <link rel="stylesheet" href="css/genomic/dropdown_seq.css">
+
+
+
 
 
     <link href="https://fonts.googleapis.com/css2?family=Cantora+One&display=swap" rel="stylesheet">
@@ -75,7 +79,20 @@
 
     <!-- window for displaying sequences -->
     <div id = sequence_window>
-        <button type="button" id= "test", onclick= "launch_test_py_node()"> TEST </button>
+        <div class = "align_select">
+            <div class = "dropdown">
+                <button class = "dropbtn">Select Aligments
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href = "#">TEST 1</a>
+                    <a href = "#">TEST 2</a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- <button type="button" id= "test", onclick= "launch_test_py_node()"> TEST </button> -->
         <div id = sequence_window_text>
             
         </div>
