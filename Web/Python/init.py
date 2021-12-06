@@ -33,9 +33,10 @@ def find_src_config():
     for line in config:
         if line[0:10] == "Blast_Path":
             PATH = line[11:len(line)-1]
-            if test_blastn(PATH)==0:
+            type_error=test_blastn(PATH)
+            if type_error==0:
                 return PATH
-    return 'Error'
+    raise  ValueError('Error blast directory not found',type_error) 
 
 
 def exec_init():

@@ -35,14 +35,23 @@ app.post("/launch_py", async (req, res) => {
     var dataToSend;
   
     const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'blastn',PATH, shell]);
-  
+
     python.stdout.on('data', function (data) {
-        console.log('Pipe data from python script ...');
         dataToSend = data.toString();
+    });
+    
+    python.stderr.on('data', function(data) {
+        console.error(data.toString());
+    });
+
+
+    python.on('error', function(error) {
+        console.log("Error: bad command", error);
     });
   
     python.on('close', (code) => {
         console.log(`child process close all stdio with code ${code}`);
+        console.log()
         
         // send data to browser
         let response = {
@@ -50,7 +59,6 @@ app.post("/launch_py", async (req, res) => {
             "test":"coucou_bg_des_iles",
             "test_2":"test_num_2"
         }
-        
         res.status(200).send(JSON.stringify(response));
     
     });
@@ -63,9 +71,14 @@ app.post("/init_py", async (req, res) => {
     const python = spawn(current_python, [`${__dirname}/Python/blast_command.py`,'init']);
   
     python.stdout.on('data', function (data) {
-        console.log('Pipe data from python script ...');
+        console.log('try blast command....');
         dataToSend = data.toString();
     });
+
+    python.stderr.on('data', function(data) {
+        console.error(data.toString());
+    });
+
   
     python.on('close', (code) => {
         console.log(`child process close all stdio with code ${code}`);
