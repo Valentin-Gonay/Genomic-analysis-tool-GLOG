@@ -57,7 +57,7 @@ class Main{
     getSeqfrom(){
         let a=this.CurrentProject
         let b=a.getSeq()
-        console.log(b)
+        console.log('test :\n ',b)
     }
     getproject(){return this.CurrentProject}
 
@@ -86,6 +86,14 @@ class Resultat {
         this.statistics = statistics;
     }
 
+    parse_resu(){
+        fetch('http://localhost:8080/Data/data/resu.txt').then((function(response){
+        		response.text().then((function(text){
+                    //Split on '>' + suppression des valeurs vides ou undefined
+                    parser_res(text)
+                }))
+            }))
+    }
 
     getAlignment(sequence_Q,sequence_2){
         var objct = this;

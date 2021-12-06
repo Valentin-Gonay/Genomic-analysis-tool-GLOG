@@ -1,4 +1,4 @@
-BLASTN 2.12.0+
+BLASTN 2.9.0+
 
 
 Reference: Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb
@@ -7,7 +7,7 @@ Comput Biol 2000; 7(1-2):203-14.
 
 
 
-Database: ../Data/BD/test.fsa
+Database: Data/BD/blast_2-9/test.fsa
            5 sequences; 148,661 total letters
 
 
@@ -17,14 +17,14 @@ coronavirus 2 isolate SARS-CoV-2/human/USA/LA-CDC-LC0090104/2021,
 complete genome.
 
 Length=29761
-                                                                      Score     E
-Sequences producing significant alignments:                          (Bits)  Value
+                                                                      Score        E
+Sequences producing significant alignments:                          (Bits)     Value
 
-ENA|MZ591695|MZ591695.1 Severe acute respiratory syndrome coronav...  54959   0.0  
-ENA|MN908947|MN908947.3 Severe acute respiratory syndrome coronav...  54649   0.0  
-ENA|MW915209|MW915209.1 Severe acute respiratory syndrome coronav...  54567   0.0  
-ENA|MZ171597|MZ171597.1 Severe acute respiratory syndrome coronav...  40629   0.0  
-ENA|MZ637308|MZ637308.1 Severe acute respiratory syndrome coronav...  37065   0.0  
+ENA|MZ591695|MZ591695.1 Severe acute respiratory syndrome coronav...  54959      0.0  
+ENA|MN908947|MN908947.3 Severe acute respiratory syndrome coronav...  54649      0.0  
+ENA|MW915209|MW915209.1 Severe acute respiratory syndrome coronav...  54567      0.0  
+ENA|MZ171597|MZ171597.1 Severe acute respiratory syndrome coronav...  40629      0.0  
+ENA|MZ637308|MZ637308.1 Severe acute respiratory syndrome coronav...  37065      0.0  
 
 
 >ENA|MZ591695|MZ591695.1 Severe acute respiratory syndrome coronavirus 
@@ -10010,8 +10010,8 @@ Lambda      K        H
 Effective search space used: 4417460948
 
 
-  Database: ../Data/BD/test.fsa
-    Posted date:  Nov 5, 2021  2:19 PM
+  Database: Data/BD/blast_2-9/test.fsa
+    Posted date:  Dec 6, 2021  3:22 PM
   Number of letters in database: 148,661
   Number of sequences in database:  5
 
