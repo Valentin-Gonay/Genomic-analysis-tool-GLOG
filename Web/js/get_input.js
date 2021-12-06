@@ -6,19 +6,16 @@ function getTextFromInput() {
 
 function updateSequences(){
 	//extracts sequences from fasta, then returns them as
-	text = getTextFromInput();
+	let	text = getTextFromInput();
 	// function(text){
-			let txt=text.split('>').filter(e=>e)
-			txt=txt.map(e=>{
-					e='>'+e;
-					return [e.substring(0, e.indexOf('\n')), e.substring(e.indexOf('\n'),e.length)]
-			})
-			let sequence=txt.map((e)=>{
-				var seq = e[1].trim();
-				var ID = e[0];
-				return new Sequence(seq,ID)
-			})
-			return sequence[0];
+		let txt=text.split('>').filter(e=>e)
+		txt=txt.map(e=>{
+			e='>'+e;
+			return [e.substring(0, e.indexOf('\n')), e.substring(e.indexOf('\n'),e.length)]
+		})
+			var seq = txt[0][1];
+			var ID = txt[0][0];
+			return new Sequence(seq,ID)
 	// }
 
 }

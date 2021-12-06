@@ -26,14 +26,12 @@ async function write_py_node(main){
     method:"POST",
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
-      title: main.CurrentProject.inputsequence.ID,
-      data: main.CurrentProject.inputsequence.Sequence
+      title: main.current_user.current_project.inputsequence.ID,
+      data: main.current_user.current_project.inputsequence.Sequence
     })
    });
-  console.log(main.CurrentProject.inputsequence.ID)
-  console.log(main.CurrentProject.inputsequence.Sequence)
-  console.log(result);
+
   const test = await result.json();
-  console.log(test);
+
 }
 

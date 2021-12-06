@@ -1,6 +1,7 @@
-const main = new Main(new User(), new Project());
-main.getSeqfrom();
+const Udef = [new User('defaut')]
+const main = new Main(Udef, Udef[0]);
 launch_init()
+main.loadbd();
 const btninput = document.getElementById('getval')
 const Loadinput = (e) => {
     if (test_input()){

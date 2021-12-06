@@ -9,6 +9,7 @@ class Sequence{
 
 class Project {
     constructor(){
+        this.name='default'
         this.sequences=[];
         this.resultat=[];
         this.inputsequence='';
@@ -43,27 +44,27 @@ class Project {
 
 class User{
     constructor() {
-        this.Name = 'DefaultUser';
-        this.Project=[];
+        this.name = 'DefaultUser';
+        this.all_project=[];
+        this.current_project=new Project()
     }
 }
 
 
 class Main{
-    constructor(user,project){
-        this.user = user;
-        this.CurrentProject= project;
+    constructor(all_user,current_user){
+        this.all_user = all_user;
+        this.current_user= current_user;
     }
     getSeqfrom(){
-        let a=this.CurrentProject
-        let b=a.getSeq()
-        console.log(b)
+     this.current_user.current_project.getSeq()
     }
-    getproject(){return this.CurrentProject}
+    getproject(){return this.current_user.current_project}
 
     loadinput(){
-        this.CurrentProject.loadRawinput()
-        console.log('CCCAAAAACCCCCCCCAAAAAA')
+        this.current_user.current_project.loadRawinput()    }
+    loadbd(){
+        this.current_user.current_project.loadsequence()
     }
 
 }
