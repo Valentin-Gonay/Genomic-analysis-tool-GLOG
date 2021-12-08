@@ -153,6 +153,10 @@ class Resultat {
         }
         return tab_align
     }
+
+    getAlignements() {
+        return this.alignements;
+    }
 }
 
 
