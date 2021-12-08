@@ -45,28 +45,31 @@
 
     <!-- window input sequence -->
     <div id = input_window>
-        <div class = "formblock all" in="qseq">
-            <label for ="seq">Enter FASTA sequence(s)</label>
+        <div class = "formblock_all" in="qseq">
+            <label for ="seq" id="input_title">Enter FASTA sequence(s)</label>
             <textarea id = "seq" class = "reset" rows = "5" cols = "80" name = "QUERY" suggesthint></textarea>
             <label for="avatar"></label>
-            <input type="file"id="avatar" name="avatar" accept=".fasta" onchange="pasteFileIntoTextArea()">
-            <button type="button" id="getval" >Get Value</button>
+            <input type="file" id="avatar" name="avatar" accept=".fasta" onchange="pasteFileIntoTextArea()">
+            <button type="button" id="start_pr" >Start Project</button>
         </div>
     </div>
 
 
     <!-- window for displaying graph -->
     <div id = graph_window>
-        <nav>
-            <h2>TESTSTSTSTSSTSTS</h2>
-            <input id="toggle" type="checkbox" value =' TEST'checked>
-            <ul id = bouton_deroulant>
-                <li onclick="create_graphgen(resu)"><a>Général</a></li>
-                <!--<li><a>Align_1</a></li>
-                <li><a>Align_2</a></li>-->
-            </ul>
-        </nav>
 
+        <div class = "align_select">
+            <div class = "dropdown">
+                <button class = "dropbtn">Select Statistics
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="bouton_deroulant">
+                    <a href = "#">General</a>
+                </div>
+            </div>
+        </div>
+
+    
         <canvas id="graph" style="display: none;"></canvas>
         <canvas id="graph_length" style="display: none;"></canvas>
         <canvas id="graph_identities" style="display: none;"></canvas>
@@ -101,15 +104,15 @@
 
     <div id = bot_menu>
         <nav id="nav_bot">
-            <b href="#" id="menu_input">
+            <b href="#" class="menu_bot" id="menu_input">
                 <img class="icon" src="figures/play-button.png" alt="icone">
                 INPUT
             </b>
-            <b href="#" id="menu_sequence">
+            <b href="#" class="menu_bot" id="menu_sequence">
                 <img class="icon" src="figures/align.png" alt="icone">
                 SEQUENCE
             </b>
-            <b href="#" id="menu_graph">
+            <b href="#" class="menu_bot" id="menu_graph">
                 <img class="icon" src="figures/pie-chart.png" alt="icone">
                 GRAPH
             </b>

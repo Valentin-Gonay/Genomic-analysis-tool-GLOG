@@ -3,7 +3,7 @@
     border: 3px solid #949596;
     border-radius: 5px;
     position: absolute;
-    top: 70px;
+    top: 50px;
     background: rgb(66, 66, 66);
     width: calc(98% - 8px);
     height: calc(100% - 150px);
@@ -16,7 +16,7 @@
     color: aliceblue;
     top: 75px;
     position: absolute;
-    margin-left: 20%;
+    margin-left: calc(50% - 388.94px);
 }
 
 #sequence_dot{

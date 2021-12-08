@@ -5,29 +5,63 @@
     position: absolute;
     top: 50px;
     background: rgb(66, 66, 66);
-    width: 40%;
-    height: 360px;
+    width: calc(98% - 8px);
+    height: calc(100% - 150px);
+}
+
+.formblock_all {
+    width: 100%;
+    height: calc(100% - 150px);
 }
 
 textarea {
-    height: 7rem;
+    display: block;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    height: calc(100% - 150px);
     font-size: 90%;
     padding: 0.8em;
+    background-color: ivory;
 }
 
-label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
+#input_title {
+    position : absolute;
+    top : 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color : ivory;
 }
 
-input,
-label {
-    margin: .4rem 0;
+.formblock_all button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 3px solid white;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
 }
+
+.formblock_all button:hover {
+    background-color: #949596;
+}
+
 #avatar{
     position: absolute;
-    position: absolute;
-    top: 160px;
-    left: 80px;
+    margin-top : 5px;
+    right : calc(50% + 20px);
     opacity: 1;
+    color : ivory;
+    font-size: 14px;
+}
+
+#start_pr {
+    position: absolute;
+    margin-top : 40px;
+    left : calc(50% - 69.625px);
+    opacity: 1;
+    font-size: 14px;
 }
