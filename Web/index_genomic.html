@@ -57,16 +57,19 @@
 
     <!-- window for displaying graph -->
     <div id = graph_window>
-        <nav>
-            <h2>TESTSTSTSTSSTSTS</h2>
-            <input id="toggle" type="checkbox" value =' TEST'checked>
-            <ul id = bouton_deroulant>
-                <li onclick="create_graphgen(resu)"><a>Général</a></li>
-                <!--<li><a>Align_1</a></li>
-                <li><a>Align_2</a></li>-->
-            </ul>
-        </nav>
 
+        <div class = "align_select">
+            <div class = "dropdown">
+                <button class = "dropbtn">Select Statistics
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content" id="bouton_deroulant">
+                    <a href = "#">General</a>
+                </div>
+            </div>
+        </div>
+
+    
         <canvas id="graph" style="display: none;"></canvas>
         <canvas id="graph_length" style="display: none;"></canvas>
         <canvas id="graph_identities" style="display: none;"></canvas>
