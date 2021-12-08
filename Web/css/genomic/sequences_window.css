@@ -12,9 +12,11 @@
 }
 
 #sequence_window_text{
-    margin: auto;
     font-family: 'Courier New', Courier, monospace;
     color: aliceblue;
+    top: 75px;
+    position: absolute;
+    margin-left: 20%;
 }
 
 #sequence_dot{
