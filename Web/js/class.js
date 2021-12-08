@@ -1,10 +1,28 @@
 // CECI est le fichier de classes
 
 class Sequence{
-    constructor(sequence, ID){
+    constructor(sequence = '', ID = ''){
         this.Sequence = sequence;
         this.ID = ID;
+        this.length = 0;
     }
+    compare(sequence_2_ID){
+        if(this.ID.includes(sequence_2_ID)){
+            return this
+        }
+        return false
+    }
+}
+
+class Statistics{
+    constructor(score, e_value, identities, pIdentities, gaps, pGaps){
+        this.score = score;
+        this.e_value = e_value;
+        this.identities = identities;
+        this.pIdentities = pIdentities;
+        this.gaps = gaps;
+        this.pGaps = pGaps;
+    }   
 }
 
 class Project {
@@ -12,11 +30,12 @@ class Project {
         this.name='default'
         this.sequences=[];
         this.resultat=[];
-        this.inputsequence='';
+        this.inputsequence= new Sequence();
     }
+
     loadsequence(){
         var objct=this;
-        fetch('http://localhost:8080/Data/BD/test.fsa').then((function(response){
+        fetch('http://localhost:8080/Data/BD/blast_2-9/test.fsa').then((function(response){
         		response.text().then((function(text){
 		            let txt=text.split('>').filter(e=>e)
 		            txt=txt.map(e=>{
@@ -62,65 +81,87 @@ class Main{
     getproject(){return this.current_user.current_project}
 
     loadinput(){
-        this.current_user.current_project.loadRawinput()    }
+        this.current_user.current_project.loadRawinput()    
+    
+    }
     loadbd(){
         this.current_user.current_project.loadsequence()
     }
 
+    creat_resultat(){
+        this.current_user.current_project.resultat = new Resultat()
+        this.current_user.current_project.resultat.parse_resu(this.current_user.current_project.inputsequence,this.current_user.current_project.sequences)
+    }
+
 }
 
-//sequence_1 et sequence_2 des objets Sequence
-//alignment = alignement parse depuis le resu.txt
+
 class Alignment {
     constructor(sequence_Q,sequence_2,alignment_display,stat){
         this.sequence_Q = sequence_Q;
         this.sequence_2 = sequence_2;
         this.alignment_display = alignment_display;
         this.stat = stat;
-    }  
+    } 
 
+    creat_stat(a,b,c,d,e,f){
+       this.stat = new Statistics(a,b,c,d,e,f);
+    }
+
+    deep_copie(){
+        return JSON.parse(JSON.stringify(this));
+    }
 }
+
+
 
 class Resultat {
-    constructor(alignment,statistics){
-        this.alignment = alignment;
-        this.statistics = statistics;
+    constructor(){
+        this.alignments = [];
+        this.statistics;
     }
 
-    parse_resu(){
+    parse_resu(input_seq,all_seq){
+        var objct = this;
+        var input_seq = input_seq;
+        var all_seq = all_seq;
         fetch('http://localhost:8080/Data/data/resu.txt').then((function(response){
         		response.text().then((function(text){
                     //Split on '>' + suppression des valeurs vides ou undefined
-                    parser_res(text)
+                    objct.alignments = objct.parser_res(text,objct.alignments,input_seq,all_seq);
                 }))
             }))
+        return this.alignments = objct.alignments
     }
 
-    getAlignment(){
-        var objct = this;
-        
-        fetch('http://localhost:8080/Data/data/resu.txt').then((function(response){
-        		response.text().then((function(text){
-                    //Split on '>' + suppression des valeurs vides ou undefined
-                    let txt = text.split('>').filter(e=>e)
-                    txt=txt.map(e=>{
-                        let line = txt.split('\n');
-                        
-                    });
-            // chercher le ID de resu dans sequence.ID
-            }));
-        }));
+    parser_res(text,tab_align,input_seq,all_seq) {
+
+        let tab = text.split('\n');
+        tab = tab.map(e => e.replaceAll('\r',''));
+        let count = 0;
+        var alignements = new Alignment();
+        let query
+      
+      
+        for (let i = 0; i < tab.length; i++){
+      
+          query = query_parsing(tab[i],input_seq)
+      
+          let rep = alignments_parsing(tab[i],tab[i+1],tab[i+2],tab[i+3],count,alignements,tab_align,query,all_seq)
+          count = rep[0];
+          alignements = rep[1];
+        }
+        return tab_align
     }
 }
 
-class Resu {
-    constructor (query,alignements){
-        this.query = query;
-        this.align = alignements;
-    }
 
-    getAlignements (){return this.align;}
+//ajout au html
+alignement_window.innerHTML= resu.align.alignement_2.seq.toString().replaceAll(',','<br>');
+let alignement_window = document.getElementById('sequence_window_text'); 
 
-    getQuery (){return this.query;}
 
-}
+
+  
+
+
