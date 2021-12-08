@@ -45,12 +45,12 @@
 
     <!-- window input sequence -->
     <div id = input_window>
-        <div class = "formblock all" in="qseq">
-            <label for ="seq">Enter FASTA sequence(s)</label>
+        <div class = "formblock_all" in="qseq">
+            <label for ="seq" id="input_title">Enter FASTA sequence(s)</label>
             <textarea id = "seq" class = "reset" rows = "5" cols = "80" name = "QUERY" suggesthint></textarea>
             <label for="avatar"></label>
-            <input type="file"id="avatar" name="avatar" accept=".fasta" onchange="pasteFileIntoTextArea()">
-            <button type="button" id="getval" >Get Value</button>
+            <input type="file" id="avatar" name="avatar" accept=".fasta" onchange="pasteFileIntoTextArea()">
+            <button type="button" id="start_pr" >Start Project</button>
         </div>
     </div>
 
