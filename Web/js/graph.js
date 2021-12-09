@@ -18,6 +18,10 @@ function createDropdownMenu(alignements){ //A changer : prendre l'object de rés
 
 
 function create_graphgen(main){
+  document.getElementById("div_graph").style.display =  'block';
+  document.getElementById("graph_length").style.display =  'none';
+  document.getElementById("graph_identities").style.display =  'none';
+  document.getElementById("graph_gap").style.display =  'none';
   const graph = document.getElementById("graph").getContext("2d");
 
   let data_graph1 = crea_graph1(main);
@@ -159,17 +163,21 @@ function createGraphPage(num_alignment){
   let graph_L = new Chart(graph_length, config_graphLength);
   let graph_I = new Chart(graph_identities, config_graphIdent);
   let graph_G = new Chart(graph_gap, config_graphGap);
-
-  document.getElementById("graph_length").style.display =  'flex';
-  document.getElementById("graph_identities").style.display =  'flex';
-  document.getElementById("graph_gap").style.display =  'flex';
+  
+  document.getElementById("div_graph").style.display =  'none';
+  document.getElementById("graph_length").style.display =  'block';
+  document.getElementById("graph_identities").style.display =  'block';
+  document.getElementById("graph_gap").style.display =  'block';
+  // document.getElementById("div_graphLength").style.display =  'block';
+  // document.getElementById("div_graphIdentities").style.display =  'block';
+  // document.getElementById("div_graphGap").style.display =  'block';
 }
 
 function crea_dataAlign(align) {
   let data = [];
 
   let data_graphLength = {
-    labels : ['Query', 'Alignement'],
+    labels : ['Query', 'Alignment'],
     datasets : [
       {
         label : 'LENGTH',
@@ -200,8 +208,8 @@ function crea_dataAlign(align) {
       }
     ]
   }
-  data_graphIdent.datasets[0].data.push(align.sequence_2.pIdentities);
-  data_graphIdent.datasets[0].data.push(100 - align.sequence_2.pIdentities);
+  data_graphIdent.datasets[0].data.push(align.stat.pIdentities);
+  data_graphIdent.datasets[0].data.push(100 - Number(align.stat.pIdentities));
   data.push(data_graphIdent);
 
   let data_graphGap = {
@@ -214,10 +222,11 @@ function crea_dataAlign(align) {
       }
     ]
   }
-  data_graphGap.datasets[0].data.push(align.sequence_2.pGaps);
-  data_graphGap.datasets[0].data.push(100 - align.sequence_2.pGaps);
+  data_graphGap.datasets[0].data.push(align.stat.pGaps);
+  data_graphGap.datasets[0].data.push(100 - Number(align.stat.pGaps));
   data.push(data_graphGap);
 
+  console.log(data);
   return data;
 }
 
