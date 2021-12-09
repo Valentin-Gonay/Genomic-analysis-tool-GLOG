@@ -79,23 +79,29 @@ const crea_graph1 = (class_resu) => {
   ]
 };*/
 
+async function fetchsynch(url) {
+  const res = await(fetch(url));
+  const data = await(res.text());
+  return data;
+}
 
+async function createDropdownMenu(main){ //A changer : prendre l'object de résultat en argument // Parser avant
 
-function createDropdownMenu(main){ //A changer : prendre l'object de résultat en argument // Parser avant
-  main.creat_resultat();
-  console.log(main);
-  const alignments = main.current_user.current_project.resultat.alignments;
-  console.log(alignments);
-
-  for (let i = 0; i < alignments.length; i++){
-    console.log(1);
-    let fct = 'createGraphPage(\'' + alignment[i] + '\')';
-    let button = document.createElement('a');
-    button.setAttribute('onclick', fct);
-    button.textContent = alignment[i].sequence_Q.ID + ' - ' + alignment[i].sequence_2.ID.substring(0,23);
-    let div = document.getElementById('bouton_deroulant');
-    div.appendChild(button);
+    const alignments = main.current_user.current_project.resultat.alignments;
+    console.log(alignments);
+    for (let i = 0; i < alignments.length; i++){
+      console.log(1);
+      let fct = 'createGraphPage(\'' + alignment[i] + '\')';
+      let button = document.createElement('a');
+      button.setAttribute('onclick', fct);
+      button.textContent = alignment[i].sequence_Q.ID + ' - ' + alignment[i].sequence_2.ID.substring(0,23);
+      let div = document.getElementById('bouton_deroulant');
+      div.appendChild(button);
+    
   }
+  
+
+  
 };
 
 function createGraphPage(alignement){

@@ -121,17 +121,13 @@ class Resultat {
         this.statistics;
     }
 
-    parse_resu(input_seq,all_seq){
-        var objct = this;
+    async parse_resu(input_seq,all_seq){
         var input_seq = input_seq;
         var all_seq = all_seq;
-        fetch('http://localhost:8080/Data/data/resu.txt').then((function(response){
-        		response.text().then((function(text){
-                    //Split on '>' + suppression des valeurs vides ou undefined
-                    objct.alignments = objct.parser_res(text,objct.alignments,input_seq,all_seq);
-                }))
-            }))
-        return this.alignments = objct.alignments
+        const fetch_data = await(fetchsynch('http://localhost:8080/Data/data/resu.txt'));
+        this.alignments = this.parser_res(fetch_data,this.alignments,input_seq,all_seq);
+        console.log(this.alignments);
+        return true;
     }
 
     parser_res(text,tab_align,input_seq,all_seq) {
