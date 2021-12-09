@@ -72,17 +72,24 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content" id="bouton_deroulant">
-                    <a href = "#">General</a>
+                    <a href = "#" onclick = create_graphgen(main)>General</a>
                 </div>
             </div>
         </div>
 
-    
-        <canvas id="graph" style="display: none;"></canvas>
-        <canvas id="graph_length" style="display: none;"></canvas>
-        <canvas id="graph_identities" style="display: none;"></canvas>
-        <canvas id="graph_gap" style="display: none;"></canvas>
-
+        <div>
+            <canvas id="graph" style="display: none;"></canvas>
+        </div>
+        <div>
+            <canvas id="graph_length" style="display: none;"></canvas>
+        </div>
+        <div>
+            <canvas id="graph_identities" style="display: none;"></canvas>
+        </div>
+        <div>
+            <canvas id="graph_gap" style="display: none;"></canvas>
+        </div>
+        
         <div id="graph_infos"></div>
 
     </div>

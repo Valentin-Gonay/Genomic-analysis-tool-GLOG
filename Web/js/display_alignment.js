@@ -23,8 +23,8 @@ function display_align_html(main,id){
     }
 }
 
-function clean_child_list(){
-    let div = document.getElementById("dropdown-alignment");
+function clean_child_list(id){
+    let div = document.getElementById(id);
     while (div.firstChild){
         div.removeChild(div.lastChild);
     }

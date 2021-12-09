@@ -12,12 +12,10 @@
 }
 
 #graph {
-    background-color: rgb(251, 251, 251);
-    width: calc(98% - 8px);
-    height: calc(100% - 150px);
-    top: 50px;
     display: flex;
     position: absolute;
+    width: 1000px;
+    top: 50px;
 }
 
 /*#graph_length {
