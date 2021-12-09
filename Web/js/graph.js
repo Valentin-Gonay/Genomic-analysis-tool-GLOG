@@ -1,19 +1,36 @@
-function create_graphgen(class_resu){
-  console.info(class_resu);
+function create_graphgen(main){
   const graph = document.getElementById("graph").getContext("2d");
 
-  let data_graph1 = crea_graph1(class_resu);
+  let data_graph1 = crea_graph1(main);
 
   var config_graph1 = {
     type: 'bar',
     data: data_graph1,
-    /*options: {
+    options: {
       responsive: true,
-        title: {
-          display: true,
-          text: 'Test'
-        }
-    }*/
+      title: {
+        display: true,
+        text: 'Statistiques générales'
+      },
+      scales:{
+        x:{
+          ticks: {
+            color:'#FFFFFF',
+          },
+          grid: {
+            color:'#FFFFFF',
+          }
+        },
+        y:{
+          ticks: {
+            color:'#FFFFFF',
+          },
+          grid:{
+            color:'#FFFFFF',
+          }
+        },
+      },
+    }
   };
   
   let graph1 = new Chart(graph,config_graph1);
@@ -21,68 +38,42 @@ function create_graphgen(class_resu){
   document.getElementById("graph").style.display =  'flex';
 }
 
-const crea_graph1 = (class_resu) => {
-
+const crea_graph1 = (main) => {
+  const alignments = main.current_user.current_project.resultat.alignments;
   let data_graph = {
     labels : [],
     datasets : [
       {
         label : 'SCORE',
-        data : []
+        data : [],
+        backgroundColor :['#70ADE780'],
       },
       {
         label : 'E-VALUE',
-        data : []
+        data : [],
+        backgroundColor :['#FF573380'],
       },
       {
         label : '%GAPS',
-        data : []
+        data : [],
+        backgroundColor :['#61c2cc80'],
       },
       {
         label : '%IDENTITIES',
-        data : []
+        data : [],
+        backgroundColor :['#b4e98b80'],
       }
     ]
   }
 
-  //data_graph.labels.push(class_resu.query.title);       FAIRE AFFICHER QUERY QUELQUE PART !!!
-  
-  for (let alignement in class_resu.align){
-
-    data_graph.labels.push(class_resu.align[alignement].title);
-    
-    data_graph.datasets[0].data.push(class_resu.align[alignement].score);
-    data_graph.datasets[1].data.push(class_resu.align[alignement].e_value);
-    data_graph.datasets[2].data.push(class_resu.align[alignement].pGaps);
-    data_graph.datasets[3].data.push(class_resu.align[alignement].pIdentities);
+  for (let alignment of alignments){
+    data_graph.labels.push(alignment.sequence_2.ID);
+    data_graph.datasets[0].data.push(alignment.stat.score);
+    data_graph.datasets[1].data.push(alignment.stat.e_value);
+    data_graph.datasets[2].data.push(alignment.stat.pGaps);
+    data_graph.datasets[3].data.push(alignment.stat.pIdentities);
   }
-
-  console.log(data_graph);
   return data_graph;
-}
-
-/*var data = {
-  labels : ['Data1', 'Data2', 'Data3', 'Data4'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [356, 139, 490, 195],
-      //borderColor: Utils.CHART_COLORS.red,
-      //backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
-    },
-    {
-      label: 'Dataset 2',
-      data: [36, 39, 49, 19],
-      //borderColor: Utils.CHART_COLORS.blue,
-      //backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
-    }
-  ]
-};*/
-
-async function fetchsynch(url) {
-  const res = await(fetch(url));
-  const data = await(res.text());
-  return data;
 }
 
 function createDropdownMenu(alignements){ //A changer : prendre l'object de résultat en argument // Parser avant
