@@ -14,8 +14,7 @@
 #graph {
     display: flex;
     position: absolute;
-    width: calc(98% - 8px);
-    height: calc(100% - 150px);
+    width: 1000px;
     top: 50px;
 }
 

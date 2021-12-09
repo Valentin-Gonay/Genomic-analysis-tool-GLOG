@@ -16,17 +16,12 @@ btninput.addEventListener('click', Loadinput,false)
 
 
 document.getElementById('menu_graph').addEventListener('click',function() {
+    clean_child_list("bouton_deroulant");
     createDropdownMenu(main);
-  
-    document.getElementById("input_window").style.display =  'none';
-    document.getElementById("sequence_window").style.display =  'none';
-    document.getElementById("graph_window").style.display =  'flex';
-  
-    document.getElementById("start_bot").className = "animation start-graph";
-  });
+});
 
 document.getElementById('menu_sequence').addEventListener('click',function(){
-    clean_child_list();
+    clean_child_list("dropdown-alignment");
     creat_list_align(main);
 });
 

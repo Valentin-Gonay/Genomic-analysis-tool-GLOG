@@ -1,3 +1,22 @@
+function createDropdownMenu(alignements){ //A changer : prendre l'object de résultat en argument // Parser avant
+  const alignments = main.current_user.current_project.resultat.alignments;
+  let div = document.getElementById('bouton_deroulant');
+  let gen = document.createElement('a');
+  gen.setAttribute('onclick','create_graphgen(main)');
+  gen.textContent = 'General';
+  div.appendChild(gen);
+  for (let i = 0; i < Object.keys(alignments).length; i ++) {//(let alignment of alignments){
+    let key = Object.keys(alignments)[i];
+    let fct = 'createGraphPage(\'' + key + '\')';
+    let button = document.createElement('a');
+    button.setAttribute('onclick', fct);
+    button.textContent = alignments[key].sequence_Q.ID + ' - ' + alignments[key].sequence_2.ID.substring(0,23);
+    let div = document.getElementById('bouton_deroulant');
+    div.appendChild(button);
+  }
+};
+
+
 function create_graphgen(main){
   const graph = document.getElementById("graph").getContext("2d");
 
@@ -75,21 +94,6 @@ const crea_graph1 = (main) => {
   }
   return data_graph;
 }
-
-function createDropdownMenu(alignements){ //A changer : prendre l'object de résultat en argument // Parser avant
-    console.log(main.current_user.current_project.resultat)
-    const alignments = main.current_user.current_project.resultat.alignments;
-    console.log(alignments);
-    for (let i = 0; i < Object.keys(alignments).length; i ++) {//(let alignment of alignments){
-      let key = Object.keys(alignments)[i];
-      let fct = 'createGraphPage(\'' + key + '\')';
-      let button = document.createElement('a');
-      button.setAttribute('onclick', fct);
-      button.textContent = alignments[key].sequence_Q.ID + ' - ' + alignments[key].sequence_2.ID.substring(0,23);
-      let div = document.getElementById('bouton_deroulant');
-      div.appendChild(button);
-  }
-};
 
 function createGraphPage(num_alignment){
 
