@@ -86,93 +86,91 @@ async function fetchsynch(url) {
 }
 
 function createDropdownMenu(alignements){ //A changer : prendre l'object de résultat en argument // Parser avant
-
+    console.log(main.current_user.current_project.resultat)
     const alignments = main.current_user.current_project.resultat.alignments;
     console.log(alignments);
-    for (let alignment of alignments){
-      let fct = 'createGraphPage(\'' + alignment + '\')';
+    for (let i = 0; i < Object.keys(alignments).length; i ++) {//(let alignment of alignments){
+      let key = Object.keys(alignments)[i];
+      let fct = 'createGraphPage(\'' + key + '\')';
       let button = document.createElement('a');
       button.setAttribute('onclick', fct);
-      button.textContent = alignment.sequence_Q.ID + ' - ' + alignment.sequence_2.ID.substring(0,23);
+      button.textContent = alignments[key].sequence_Q.ID + ' - ' + alignments[key].sequence_2.ID.substring(0,23);
       let div = document.getElementById('bouton_deroulant');
       div.appendChild(button);
-    
   }
-  
-
-  
 };
 
-function createGraphPage(alignement){
-    console.info(object.align[alignement]);
+function createGraphPage(num_alignment){
 
-    const graph_length = document.getElementById("graph_length").getContext("2d");
-    const graph_identities = document.getElementById("graph_identities").getContext("2d");
-    const graph_gap = document.getElementById("graph_gap").getContext("2d");
+  const align = main.current_user.current_project.resultat.alignments[num_alignment];
+  
+  const graph_length = document.getElementById("graph_length").getContext("2d");
+  const graph_identities = document.getElementById("graph_identities").getContext("2d");
+  const graph_gap = document.getElementById("graph_gap").getContext("2d");
 
-    let data_graphs = crea_dataAlign(object.align[alignement], object);
+  let data_graphs = crea_dataAlign(align);
 
-    var config_graphLength = {
-      type: 'bar',
-      data: data_graphs[0],
-      options : {
-        scales:{
-          x:{
-            ticks: {
-              color:'#FFFFFF',
-            },
-            grid: {
-              color:'#FFFFFF',
-            }
+  var config_graphLength = {
+    type: 'bar',
+    data: data_graphs[0],
+    options : {
+      scales:{
+        x:{
+          ticks: {
+            color:'#FFFFFF',
           },
-          y:{
-            ticks: {
-              color:'#FFFFFF',
-            },
-            grid:{
-              color:'#FFFFFF',
-            }
-          },
+          grid: {
+            color:'#FFFFFF',
+          }
         },
-        title: {
-          display: true,
-          text: 'Bar Chart Sequence Length'
-        }
+        y:{
+          ticks: {
+            color:'#FFFFFF',
+          },
+          grid:{
+            color:'#FFFFFF',
+          }
+        },
+      },
+      title: {
+        display: true,
+        text: 'Bar Chart Sequence Length'
       }
-    };
+    }
+  };
 
-    var config_graphIdent = {
-      type: 'pie',
-      data: data_graphs[1],
-      options : {
-        title: {
-          display: true,
-          text: 'Pie Chart Identities'
-        }
+  var config_graphIdent = {
+    type: 'pie',
+    data: data_graphs[1],
+    options : {
+      title: {
+        display: true,
+        text: 'Pie Chart Identities'
       }
-    };
+    }
+  };
 
-    var config_graphGap = {
-      type: 'pie',
-      data: data_graphs[2],
-      options : {
-        title: {
-          display: true,
-          text: 'Pie Chart Gaps'
-        }
+  var config_graphGap = {
+    type: 'pie',
+    data: data_graphs[2],
+    options : {
+      title: {
+        display: true,
+        text: 'Pie Chart Gaps'
       }
-    };
-    
-    let graph_L = new Chart(graph_length,config_graphLength);
-    let graph_I = new Chart(graph_identities,config_graphIdent);
-    let graph_G = new Chart(graph_gap,config_graphGap);
+    }
+  };
+  
+  let graph_L = new Chart(graph_length, config_graphLength);
+  let graph_I = new Chart(graph_identities, config_graphIdent);
+  let graph_G = new Chart(graph_gap, config_graphGap);
 
-    document.getElementById("graph_length").style.display =  'flex';
-    document.getElementById("graph_identities").style.display =  'flex';
-    document.getElementById("graph_gap").style.display =  'flex';
+  document.getElementById("graph_length").style.display =  'flex';
+  document.getElementById("graph_identities").style.display =  'flex';
+  document.getElementById("graph_gap").style.display =  'flex';
 }
 
-function crea_dataAlign(alignement, object) {
+function crea_dataAlign(align) {
   let data = [];
 
   let data_graphLength = {
@@ -193,8 +191,8 @@ function crea_dataAlign(alignement, object) {
       }
     ]
   }
-  data_graphLength.datasets[0].data.push(object.query.length);
-  data_graphLength.datasets[0].data.push(alignement.length);
+  data_graphLength.datasets[0].data.push(align.sequence_Q.length);
+  data_graphLength.datasets[0].data.push(align.sequence_2.length);
   data.push(data_graphLength);
 
   let data_graphIdent = {
@@ -207,8 +205,8 @@ function crea_dataAlign(alignement, object) {
       }
     ]
   }
-  data_graphIdent.datasets[0].data.push(alignement.pIdentities);
-  data_graphIdent.datasets[0].data.push(100 - alignement.pIdentities);
+  data_graphIdent.datasets[0].data.push(align.sequence_2.pIdentities);
+  data_graphIdent.datasets[0].data.push(100 - align.sequence_2.pIdentities);
   data.push(data_graphIdent);
 
   let data_graphGap = {
@@ -221,8 +219,8 @@ function crea_dataAlign(alignement, object) {
       }
     ]
   }
-  data_graphGap.datasets[0].data.push(alignement.pGaps);
-  data_graphGap.datasets[0].data.push(100 - alignement.pGaps);
+  data_graphGap.datasets[0].data.push(align.sequence_2.pGaps);
+  data_graphGap.datasets[0].data.push(100 - align.sequence_2.pGaps);
   data.push(data_graphGap);
 
   return data;
