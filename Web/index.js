@@ -18,13 +18,13 @@ const favicon = require('serve-favicon')
 
 
 const app =  express ();
-app.use(favicon(`${__dirname}/favicon.ico`));
+
 app.use(express.json())
 
 
 app.get("/", (req, res) => res.sendFile(`${__dirname}/index.html`))
 app.use(express.static(__dirname))
-
+app.use(favicon(`${__dirname}/favicon.ico`));
 app.listen(8080, () => console.log("Web server is listening... on port 8080"));
 
 let current_os=os.type()
