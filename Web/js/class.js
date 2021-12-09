@@ -126,8 +126,7 @@ class Resultat {
         var all_seq = all_seq;
         const fetch_data = await(fetchsynch('http://localhost:8080/Data/data/resu.txt'));
         this.alignments = this.parser_res(fetch_data,this.alignments,input_seq,all_seq);
-        console.log(this.alignments);
-        return true;
+        return this.alignments
     }
 
     parser_res(text,tab_align,input_seq,all_seq) {

@@ -11,6 +11,7 @@ const Loadinput = (e) => {
         launch_test_py_node();
     }
 }
+loadresu(main).then(console.log('ok'))
 btninput.addEventListener('click', Loadinput,false)
 
 
@@ -23,3 +24,8 @@ document.getElementById('menu_graph').addEventListener('click',function() {
   
     document.getElementById("start_bot").className = "animation start-graph";
   });
+
+async function loadresu(main){
+   const align= await (main.creat_resultat())
+   return align
+}

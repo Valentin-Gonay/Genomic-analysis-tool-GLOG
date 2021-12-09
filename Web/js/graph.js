@@ -85,16 +85,15 @@ async function fetchsynch(url) {
   return data;
 }
 
-async function createDropdownMenu(main){ //A changer : prendre l'object de résultat en argument // Parser avant
+function createDropdownMenu(alignements){ //A changer : prendre l'object de résultat en argument // Parser avant
 
     const alignments = main.current_user.current_project.resultat.alignments;
     console.log(alignments);
-    for (let i = 0; i < alignments.length; i++){
-      console.log(1);
-      let fct = 'createGraphPage(\'' + alignment[i] + '\')';
+    for (let alignment of alignments){
+      let fct = 'createGraphPage(\'' + alignment + '\')';
       let button = document.createElement('a');
       button.setAttribute('onclick', fct);
-      button.textContent = alignment[i].sequence_Q.ID + ' - ' + alignment[i].sequence_2.ID.substring(0,23);
+      button.textContent = alignment.sequence_Q.ID + ' - ' + alignment.sequence_2.ID.substring(0,23);
       let div = document.getElementById('bouton_deroulant');
       div.appendChild(button);
     
