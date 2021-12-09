@@ -25,6 +25,11 @@ document.getElementById('menu_graph').addEventListener('click',function() {
     document.getElementById("start_bot").className = "animation start-graph";
   });
 
+document.getElementById('menu_sequence').addEventListener('click',function(){
+    clean_child_list();
+    creat_list_align(main);
+});
+
 async function loadresu(main){
    const align= await (main.creat_resultat())
    return align

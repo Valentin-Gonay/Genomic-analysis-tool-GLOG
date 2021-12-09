@@ -155,11 +155,6 @@ class Resultat {
 }
 
 
-//ajout au html
-alignement_window.innerHTML= resu.align.alignement_2.seq.toString().replaceAll(',','<br>');
-let alignement_window = document.getElementById('sequence_window_text'); 
-
-
 
   
 
