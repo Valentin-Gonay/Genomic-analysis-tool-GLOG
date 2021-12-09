@@ -44,14 +44,22 @@
     </div>
 
     <!-- window input sequence -->
-    <div id = input_window>
-        <div class = "formblock_all" in="qseq">
+    <div id = input_window class = "formblock_all"  in="qseq">
+        <div id=start_align_input>
             <label for ="seq" id="input_title">Enter FASTA sequence(s)</label>
             <textarea id = "seq" class = "reset" rows = "5" cols = "80" name = "QUERY" suggesthint></textarea>
             <label for="avatar"></label>
             <input type="file" id="avatar" name="avatar" accept=".fasta" onchange="pasteFileIntoTextArea()">
-            <button type="button" id="getval" >Start Project</button>
+    
         </div>
+        
+        <div id=start_resu_input>
+                <label for="import_res_button" id=input_title_res>Select your alignment result</label>
+                <input type="file" id="import_res_button" name="import_res_button" accept=".txt">
+        </div>
+
+        <button type="button" id="getval" >Start Project</button>
+
     </div>
 
 
