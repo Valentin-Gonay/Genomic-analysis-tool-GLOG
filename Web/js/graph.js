@@ -79,11 +79,7 @@ const crea_graph1 = (class_resu) => {
   ]
 };*/
 
-async function fetchsynch(url) {
-  const res = await(fetch(url));
-  const data = await(res.text());
-  return data;
-}
+
 
 function createDropdownMenu(alignements){ //A changer : prendre l'object de résultat en argument // Parser avant
 

@@ -13,3 +13,8 @@ document.getElementById('menu_sequence').addEventListener('click',function() {
 
   document.getElementById("start_bot").className = "animation start-sequence";
 });
+async function fetchsynch(url) {
+  const res = await (fetch(url));
+  const data = await (res.text());
+  return data;
+}

@@ -14,9 +14,11 @@ const fs = require('fs');
 const express = require("express");
 const {spawn} = require('child_process');
 const os =require('os')
+const favicon = require('serve-favicon')
 
 
 const app =  express ();
+app.use(favicon(`${__dirname}/favicon.ico`));
 app.use(express.json())
 
 
