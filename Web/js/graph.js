@@ -10,7 +10,7 @@ function createDropdownMenu(alignements){ //A changer : prendre l'object de rés
     let fct = 'createGraphPage(\'' + key + '\')';
     let button = document.createElement('a');
     button.setAttribute('onclick', fct);
-    button.textContent = alignments[key].sequence_Q.ID + ' - ' + alignments[key].sequence_2.ID.substring(0,23);
+    button.textContent = alignments[key].sequence_Q.ID.substring(1,24) + ' - ' + alignments[key].sequence_2.ID.substring(1,24);
     let div = document.getElementById('bouton_deroulant');
     div.appendChild(button);
   }
@@ -22,6 +22,7 @@ function create_graphgen(main){
   document.getElementById("graph_length").style.display =  'none';
   document.getElementById("graph_identities").style.display =  'none';
   document.getElementById("graph_gap").style.display =  'none';
+  document.getElementById("div_graphInfos").style.display =  'none';
 
   document.getElementById("graph").remove();
   document.getElementById("div_graph").appendChild(createcanvas('graph'));
@@ -93,7 +94,7 @@ const crea_graph1 = (main) => {
   }
 
   for (let alignment of alignments){
-    data_graph.labels.push(alignment.sequence_2.ID);
+    data_graph.labels.push(alignment.sequence_2.ID.substring(1,24));
     data_graph.datasets[0].data.push(alignment.stat.score);
     data_graph.datasets[1].data.push(alignment.stat.e_value);
     data_graph.datasets[2].data.push(alignment.stat.pGaps);
@@ -172,11 +173,15 @@ function createGraphPage(num_alignment){
   let graph_L = new Chart(graph_length, config_graphLength);
   let graph_I = new Chart(graph_identities, config_graphIdent);
   let graph_G = new Chart(graph_gap, config_graphGap);
+
+  clean_child_list("div_graphInfos");
+  create_card(align);
   
   document.getElementById("div_graph").style.display =  'none';
   document.getElementById("graph_length").style.display =  'block';
   document.getElementById("graph_identities").style.display =  'block';
   document.getElementById("graph_gap").style.display =  'block';
+  document.getElementById("div_graphInfos").style.display =  'block';
   // document.getElementById("div_graphLength").style.display =  'block';
   // document.getElementById("div_graphIdentities").style.display =  'block';
   // document.getElementById("div_graphGap").style.display =  'block';
@@ -186,7 +191,7 @@ function crea_dataAlign(align) {
   let data = [];
 
   let data_graphLength = {
-    labels : ['Query', 'Alignment'],
+    labels : ['Query', 'Reference'],
     datasets : [
       {
         label : 'LENGTH',
@@ -239,6 +244,39 @@ function crea_dataAlign(align) {
   return data;
 }
 
+function create_card(align) {
+
+  let division = document.getElementById("div_graphInfos");
+  let title = document.createElement("h1");
+  title.textContent = "  Alignement";
+  division.appendChild(title);
+
+  let liste1 = document.createElement('ul');
+  let id_ref = document.createElement('li');
+  id_ref.textContent = "ID reference : " + align.sequence_2.ID.substring(1,24);
+  let id_qur = document.createElement('li');
+  id_qur.textContent = "ID query : " + align.sequence_Q.ID.substring(1,24);
+
+  liste1.appendChild(id_ref);
+  liste1.appendChild(id_qur);
+  division.appendChild(liste1);
+
+  let liste2 = document.createElement('ul');
+  let score = document.createElement('li');
+  score.textContent = "Score : " + align.stat.score;
+  let e_val = document.createElement('li');
+  e_val.textContent = "E_value : " + align.stat.e_value;
+  let identities = document.createElement('li');
+  identities.textContent = "Identities : " + align.stat.identities + ' (' + align.stat.pIdentities + '%)';
+  let gaps = document.createElement('li');
+  gaps.textContent = "Gaps : " + align.stat.gaps + ' (' + align.stat.pGaps + '%)';
+  liste2.appendChild(score);
+  liste2.appendChild(e_val);
+  liste2.appendChild(identities);
+  liste2.appendChild(gaps);
+  division.appendChild(liste2);
+}
+
 
 function createcanvas(id){
   var canv = document.createElement("CANVAS")
@@ -246,96 +284,3 @@ function createcanvas(id){
   canv.setAttribute('style','display: none')
   return canv
 }
-
-/*const query_length = document.getElementById("query_length").getContext("2d");
-const pourcent_identity = document.getElementById("pourcent_identity").getContext("2d");
-const query_cover = document.getElementById("query_cover").getContext("2d");
-const total_score = document.getElementById("total_score").getContext("2d");
-const e_value = document.getElementById("e_value").getContext("2d");
-
-
-
-let Chart1= new Chart(query_length, {
-  type : 'bar',
-  data : {
-    labels: [
-      'Ref',
-      '1',
-      '2',
-      '3', 
-    ],
-  datasets: [{
-        label: 'Length',
-        data: [356, 139189, 4903, 195],
-    }]
-  }
-  }
-);
-
-let Chart2= new Chart(query_cover, {
-  type : 'bar',
-  data : {
-    labels: [
-      'Ref',
-      '1',
-      '2',
-      '3', 
-    ],
-  datasets: [{
-        label: 'Query-cover',
-        data: [356, 139189, 4903, 195],
-    }]
-  }
-  }
-);
-  
-let Chart3= new Chart(total_score, {
-  type : 'bar',
-  data : {
-    labels: [
-      'Ref',
-      '1',
-      '2',
-      '3', 
-    ],
-  datasets: [{
-        label: 'Length',
-        data: [356, 139189, 4903, 195],
-    }]
-  }
-  }
-);
-
-let Chart4= new Chart(e_value, {
-  type : 'bar',
-  data : {
-    labels: [
-      'Ref',
-      '1',
-      '2',
-      '3', 
-    ],
-  datasets: [{
-        label: 'Length',
-        data: [356, 139189, 4903, 195],
-    }]
-  }
-  }
-);
-  
-let Chart5= new Chart(pourcent_identity, {
-  type : 'bar',
-  data : {
-    labels: [
-      'Ref',
-      '1',
-      '2',
-      '3', 
-    ],
-  datasets: [{
-        label: 'Length',
-        data: [356, 139189, 4903, 195],
-    }]
-  }
-  }
-); */

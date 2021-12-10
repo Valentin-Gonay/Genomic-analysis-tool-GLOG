@@ -41,3 +41,33 @@
     margin-left: calc(25% - calc( calc(25% - 5px) / 2));
     margin-top: calc(calc(calc(50%-5px) / 2) + 80px);
 }
+
+#div_graphInfos {
+    display: block;
+    position: absolute;
+    width: calc(50% - 5px);
+    margin-top: 60px;
+}
+
+#div_graphInfos h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24 px;
+    font-weight: bold;
+    text-decoration: underline;
+    border: 3px;
+    border-color: #dc03e4a2;
+    color : white;
+    text-align: center;
+}
+
+#div_graphInfos li {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color : white;
+    margin-left : calc(50% - 170px);
+    line-height: 2;
+}
+
+#div_graphInfos ul {
+    list-style-type: none;
+}
