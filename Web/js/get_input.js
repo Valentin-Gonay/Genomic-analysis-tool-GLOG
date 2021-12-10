@@ -22,22 +22,44 @@ function updateSequences(){
 
 const pasteText = (txt) => document.querySelector('#seq').innerHTML = txt;
 
-const pasteFileIntoTextArea = (event) => {
-  console.log("hello");
+const pasteFileIntoTextArea = () => {
   let f = document.querySelector('#avatar').files[0];
-
-  // Read File
   let reader = new FileReader();
-  reader.onload = (e) => {
+  reader.onload = () => {
     let text = reader.result;
     pasteText(text);
-    let extension = f.name.split('.').pop();
-    let model;
   }
   reader.readAsText(f);
+};
+
+
+async function get_resultat() {
+  let f = document.querySelector('#import_res_button').files[0];
+  var text = await new Promise((resolve)=>{
+    let reader = new FileReader();
+    reader.onload = (e) => {resolve(reader.result);}
+    reader.readAsText(f);
+  })
+  return text
 };
 
 const test_input=()=>{
 	text = getTextFromInput();
 	return text.indexOf('>')==0
 }
+
+function accept_imput(){
+  var state = false
+  var type =0
+  if (document.querySelector('#import_res_button').files[0]){
+    state=true
+    type =1
+  }
+  if (test_input()){
+    state=true
+    type =2
+  }
+  return[state,type]
+  
+}
+

@@ -93,6 +93,10 @@ class Main{
         this.current_user.current_project.resultat.parse_resu(this.current_user.current_project.inputsequence,this.current_user.current_project.sequences)
     }
 
+    add_empty_result(){
+        this.current_user.current_project.resultat = new Resultat()
+    }
+
 }
 
 
