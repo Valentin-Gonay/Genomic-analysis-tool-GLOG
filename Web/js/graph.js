@@ -22,6 +22,9 @@ function create_graphgen(main){
   document.getElementById("graph_length").style.display =  'none';
   document.getElementById("graph_identities").style.display =  'none';
   document.getElementById("graph_gap").style.display =  'none';
+
+  document.getElementById("graph").remove();
+  document.getElementById("div_graph").appendChild(createcanvas('graph'));
   const graph = document.getElementById("graph").getContext("2d");
 
   let data_graph1 = crea_graph1(main);
@@ -103,6 +106,12 @@ function createGraphPage(num_alignment){
 
   const align = main.current_user.current_project.resultat.alignments[num_alignment];
   
+  document.getElementById("graph_length").remove();
+  document.getElementById("div_graphLength").appendChild(createcanvas('graph_length'));
+  document.getElementById("graph_identities").remove();
+  document.getElementById("div_graphIdentities").appendChild(createcanvas("graph_identities"));
+  document.getElementById("graph_gap").remove();
+  document.getElementById("div_graphGap").appendChild(createcanvas("graph_gap"));
   const graph_length = document.getElementById("graph_length").getContext("2d");
   const graph_identities = document.getElementById("graph_identities").getContext("2d");
   const graph_gap = document.getElementById("graph_gap").getContext("2d");
@@ -228,6 +237,14 @@ function crea_dataAlign(align) {
 
   console.log(data);
   return data;
+}
+
+
+function createcanvas(id){
+  var canv = document.createElement("CANVAS")
+  canv.setAttribute('id',id)
+  canv.setAttribute('style','display: none')
+  return canv
 }
 
 /*const query_length = document.getElementById("query_length").getContext("2d");
