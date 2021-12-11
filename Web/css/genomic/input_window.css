@@ -97,5 +97,7 @@ textarea {
 #import_res_button{
     position: absolute;
     top: 20%;
-    left: calc(75% - 126px)
+    left: calc(75% - 126px);
+    color : ivory;
+
 }

@@ -11,8 +11,7 @@ const Loadinput = (e) => {
         if(val[1]==2){
             main.loadinput();
             write_py_node(main);
-            launch_test_py_node();
-            loadresu(main).then(loadEnd()).then(loadEnd_witness())
+            launch_test_py_node().then(loadresu(main)).then(loadEnd()).then(loadEnd_witness())
         }
         if(val[1]==1){
             console.log('ok1')
