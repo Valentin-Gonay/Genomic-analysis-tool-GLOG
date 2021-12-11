@@ -20,11 +20,7 @@
 }
 
 #sequence_dot{
-    color:rgb(66, 66, 66);
-}
-
-#sequence_gap{
-    color:darkgoldenrod;
+    color:rgba(66, 66, 66, 0);
 }
 
 #sequence_miss_match{
