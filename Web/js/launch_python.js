@@ -13,6 +13,7 @@ async function launch_init(){
    });
   const test = await result.json();
   if (!test.dataToSend){
+    displayerror()
     throw new Error("Blast not find, server may not correctly instaled")
   }
 }
