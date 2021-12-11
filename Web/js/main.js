@@ -7,12 +7,12 @@ const Loadinput = (e) => {
     let val = accept_imput()
     try{
     if (val[0]){
-        console.log('fonctio Début chargement')
+        loadStart("Loading inputs...");
         if(val[1]==2){
             main.loadinput();
             write_py_node(main);
             launch_test_py_node();
-            loadresu(main).then(console.log('fonction fin de chargement'))
+            loadresu(main).then(loadEnd()).then(loadEnd_witness())
         }
         if(val[1]==1){
             console.log('ok1')
@@ -20,13 +20,13 @@ const Loadinput = (e) => {
             main.add_empty_result()
             let project=main.current_user.current_project
             let resultat=project.resultat
-            loadresufrominput(project,resultat).then(console.log('fonction fin de chargement'))
+            loadresufrominput(project,resultat).then(loadEnd()).then(loadEnd_witness())
         }
     }
     }
     catch(e){
-        console.log('ffonction fin de chargement',e)
-        console.log('fonction un message d"erreur',e)
+        loadEnd();
+        displayerror();
     }
 }
 

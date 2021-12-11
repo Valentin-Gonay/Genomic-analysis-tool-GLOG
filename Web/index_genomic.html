@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="css/genomic/sequences_window.css">
     <link rel="stylesheet" href="css/dropdown_menu.css">
 
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/error.css">
 
 
 
@@ -147,6 +149,28 @@
         </nav>
     </div>
 
+    <!-- Chargement en cours -->
+    <div id = "loading_div"><div id = "loading_div_message"><p id = "loading_message"></p></div><div class="lds-ring" id="download_symbol"><div></div><div></div><div></div><div></div></div></div>
+    <div id = "end-loading_div" style="display: none;">
+        <div class="success-checkmark">
+            <div class="check-icon">
+                <span class="icon-line line-tip"></span>
+                <span class="icon-line line-long"></span>
+                <div class="icon-circle"></div>
+                <div class="icon-fix"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Erreur de chargement -->
+    <div id = "loading_div_error">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="path circle" fill="none" stroke="#D06079" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+            <line class="path line" fill="none" stroke="#D06079" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+        </svg>
+    </div>
+
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
     <script src="js/js_index.js"></script>
@@ -158,6 +182,9 @@
     <script src="js/main.js"></script>
     <script src="js/js_index.js"></script>
     <script src="js/display_alignment.js"></script>
+
+    <script src="js/loading.js"></script>
+
 
 
 </body>
