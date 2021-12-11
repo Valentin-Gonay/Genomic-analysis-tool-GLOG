@@ -14,8 +14,6 @@ const Loadinput = (e) => {
             launch_test_py_node().then(loadresu(main)).then(loadEnd()).then(loadEnd_witness())
         }
         if(val[1]==1){
-            console.log('ok1')
-            
             main.add_empty_result()
             let project=main.current_user.current_project
             let resultat=project.resultat
@@ -48,6 +46,6 @@ async function loadresu(main){
 }
 
 async function loadresufrominput(project,resultat){
-    let text= await (get_resultat()).then(console.log('ok'))
-    resultat.parser_res(text,resultat.alignments,project.inputsequence,project.sequences)
+    let text= await (get_resultat()).then(
+    resultat.parser_res(text,resultat.alignments,project.inputsequence,project.sequences));
  }

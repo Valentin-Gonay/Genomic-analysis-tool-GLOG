@@ -4,20 +4,17 @@ async function launch_test_py_node(){
   const result = await fetch("http://localhost:8080/launch_py", {
     method:"POST",
    });
-
-  console.log(result);
   const test = await result.json();
-  console.log(test);
 }
 
 async function launch_init(){
   const result = await fetch("http://localhost:8080/init_py", {
     method:"POST",
    });
-
-  console.log(result);
   const test = await result.json();
-  console.log(test);
+  if (!test.dataToSend){
+    throw new Error("Blast not find, server may not correctly instaled")
+  }
 }
 
 

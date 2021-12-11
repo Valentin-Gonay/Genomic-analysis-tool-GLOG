@@ -1,7 +1,6 @@
 function creat_list_align(main){
     let alignments = main.current_user.current_project.resultat.alignments;
     let div = document.getElementById('dropdown-alignment');
-    console.log("test:\n",alignments)
     for (let alignment of alignments){
         let fct = 'display_align_html(main,\'' + alignment.sequence_2.ID.substring(1,24) +  '\')';
         let button = document.createElement('a');

@@ -57,9 +57,7 @@ app.post("/launch_py", async (req, res) => {
         
         // send data to browser
         let response = {
-            "dataToSend" : dataToSend,
-            "test":"coucou_bg_des_iles",
-            "test_2":"test_num_2"
+            "dataToSend" : dataToSend
         }
         res.status(200).send(JSON.stringify(response));
     
@@ -79,6 +77,7 @@ app.post("/init_py", async (req, res) => {
 
     python.stderr.on('data', function(data) {
         console.error(data.toString());
+        dataToSend=false;
     });
 
   
@@ -87,9 +86,7 @@ app.post("/init_py", async (req, res) => {
         
         // send data to browser
         let response = {
-            "dataToSend" : dataToSend,
-            "test":"coucou_bg_des_iles 2",
-            "test_2":"test_num_3"
+            "dataToSend" : dataToSend
         }
         
         PATH = dataToSend
@@ -129,7 +126,6 @@ app.post("/write_py", async (req, res) => {
         // send data to browser
         let response = {
             "dataToSend" : 'ok',
-            "test":"lol",
         }
         
         res.status(200).send(JSON.stringify(response));
