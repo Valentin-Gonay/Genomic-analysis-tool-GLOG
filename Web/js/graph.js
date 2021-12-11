@@ -18,12 +18,19 @@ function createDropdownMenu(alignements){ //A changer : prendre l'object de rés
 
 
 function create_graphgen(main){
+
   document.getElementById("div_graph").style.display =  'block';
   document.getElementById("graph_length").style.display =  'none';
   document.getElementById("graph_identities").style.display =  'none';
   document.getElementById("graph_gap").style.display =  'none';
   document.getElementById("div_graphInfos").style.display =  'none';
+  if (document.getElementById("but_graph_length")) {
+    document.getElementById("but_graph_length").style.display =  'none';
+    document.getElementById("but_graph_identities").style.display =  'none';
+    document.getElementById("but_graph_gap").style.display =  'none';
+  }
 
+  create_button("div_graph", "graph", "graph_general.png");
   document.getElementById("graph").remove();
   document.getElementById("div_graph").appendChild(createcanvas('graph'));
   const graph = document.getElementById("graph").getContext("2d");
@@ -107,11 +114,11 @@ function createGraphPage(num_alignment){
 
   const align = main.current_user.current_project.resultat.alignments[num_alignment];
   
-  document.getElementById("graph_length").remove();
+  clean_child_list("div_graphLength");
+  clean_child_list("div_graphIdentities");
+  clean_child_list("div_graphGap");
   document.getElementById("div_graphLength").appendChild(createcanvas('graph_length'));
-  document.getElementById("graph_identities").remove();
   document.getElementById("div_graphIdentities").appendChild(createcanvas("graph_identities"));
-  document.getElementById("graph_gap").remove();
   document.getElementById("div_graphGap").appendChild(createcanvas("graph_gap"));
   const graph_length = document.getElementById("graph_length").getContext("2d");
   const graph_identities = document.getElementById("graph_identities").getContext("2d");
@@ -177,14 +184,18 @@ function createGraphPage(num_alignment){
   clean_child_list("div_graphInfos");
   create_card(align);
   
+  create_button("div_graphLength", "graph_length", "graph_length.png");
+  create_button("div_graphGap", "graph_gap", "graph_gaps.png");
+  create_button("div_graphIdentities", "graph_identities", "graph_identities.png");
+
   document.getElementById("div_graph").style.display =  'none';
   document.getElementById("graph_length").style.display =  'block';
   document.getElementById("graph_identities").style.display =  'block';
   document.getElementById("graph_gap").style.display =  'block';
+  document.getElementById("but_graph_length").style.display =  'flex';
+  document.getElementById("but_graph_identities").style.display =  'flex';
+  document.getElementById("but_graph_gap").style.display =  'flex';
   document.getElementById("div_graphInfos").style.display =  'block';
-  // document.getElementById("div_graphLength").style.display =  'block';
-  // document.getElementById("div_graphIdentities").style.display =  'block';
-  // document.getElementById("div_graphGap").style.display =  'block';
 }
 
 function crea_dataAlign(align) {
@@ -277,10 +288,37 @@ function create_card(align) {
   division.appendChild(liste2);
 }
 
-
 function createcanvas(id){
   var canv = document.createElement("CANVAS")
   canv.setAttribute('id',id)
   canv.setAttribute('style','display: none')
   return canv
+}
+
+function download(canvas, filename) {
+  var lnk = document.createElement('a'), e;
+  let canva = document.getElementById(canvas);
+  lnk.download = filename;
+  lnk.href = canva.toDataURL("image/png;base64");
+  if (document.createEvent) {
+    e = document.createEvent("MouseEvents");
+    e.initMouseEvent("click", true, true, window,
+                     0, 0, 0, 0, 0, false, false, false,
+                     false, 0, null);
+    lnk.dispatchEvent(e);
+  } else if (lnk.fireEvent) {
+    lnk.fireEvent("onclick");
+  }
+}
+
+function create_button(div, canvas, filename){
+  canvas = '"' + canvas + '"';
+  filename = '"' + filename + '"';
+  let division = document.getElementById(div);
+  let fct = "download(" + canvas + ',' + filename + ')'
+  let but = document.createElement('button');
+  but.textContent = 'Download ' + filename;
+  but.setAttribute('id','but_' + canvas.substring(1,canvas.length-1))
+  but.setAttribute('onclick',fct);
+  division.appendChild(but);
 }

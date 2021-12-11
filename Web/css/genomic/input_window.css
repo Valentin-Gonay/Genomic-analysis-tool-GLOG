@@ -68,6 +68,7 @@ textarea {
     font-weight: bold;
     position: absolute;
     bottom: 5px;
+    cursor: pointer;
 }
 
 .formblock_all button:hover {

@@ -18,12 +18,48 @@
     margin-left: calc(50% - 35%);
 }
 
+#div_graph button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 3px solid white;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    margin-top: calc(calc(100% / 2) + 80px);
+    margin-left: calc(50% - 133.04px);
+    cursor: pointer;
+}
+
+#div_graph button:hover {
+    background-color: #949596;
+}
+
 #div_graphLength {
     display: block;
     position: absolute;
     width: calc(50% - 5px);
     margin-left: calc(calc(50% - 5px) + 10px);
     margin-top: 50px; 
+}
+
+#div_graphLength button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: calc(50% - 96.1px);
+    margin-top : 3px;
+    cursor: pointer;
+}
+
+#div_graphLength button:hover {
+    background-color: #949596;
 }
 
 #div_graphIdentities {
@@ -34,12 +70,48 @@
     margin-left: calc(75% - calc( calc(25% - 5px) / 2));
 }
 
+#div_graphIdentities button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: calc(50% - 104.24px);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#div_graphIdentities button:hover {
+    background-color: #949596;
+}
+
 #div_graphGap {
     display: block;
     position: absolute;
     width: calc(25% - 5px);
     margin-left: calc(25% - calc( calc(25% - 5px) / 2));
     margin-top: calc(calc(calc(50%-5px) / 2) + 80px);
+}
+
+#div_graphGap button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    margin-left: calc(50% - 94px);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#div_graphGap button:hover {
+    background-color: #949596;
 }
 
 #div_graphInfos {
@@ -54,8 +126,6 @@
     font-size: 24 px;
     font-weight: bold;
     text-decoration: underline;
-    border: 3px;
-    border-color: #dc03e4a2;
     color : white;
     text-align: center;
 }
