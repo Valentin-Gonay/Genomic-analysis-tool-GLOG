@@ -1,3 +1,19 @@
+'''
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    Python file for launch Blast : initialisation of the BD or getting alignments
+
+    version 1.0.0 
+'''
+
+
 import subprocess
 
 def create_serv(PATH,OS):

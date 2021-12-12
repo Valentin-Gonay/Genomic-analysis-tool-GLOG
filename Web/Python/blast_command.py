@@ -1,3 +1,19 @@
+'''
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    Python file for parsing arguments
+
+    version 1.0.0 
+'''
+
+
 import blast_process
 import init
 import sys

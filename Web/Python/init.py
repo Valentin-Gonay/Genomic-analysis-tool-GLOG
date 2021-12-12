@@ -1,3 +1,19 @@
+'''
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    Python file for getting blast path and version
+
+    version 1.0.0 
+'''
+
+
 from os import error
 import platform
 import subprocess

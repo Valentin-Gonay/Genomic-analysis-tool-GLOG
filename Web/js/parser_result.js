@@ -1,3 +1,20 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for parsing alignment result
+
+    version 1.0.0 
+    
+*/
+
+
 function alignments_parsing(line,line_1,line_2,line_3,count,alignements,tab_align,query,all_seq){
   if (line.startsWith('>')){
       count ++;

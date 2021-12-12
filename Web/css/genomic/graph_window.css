@@ -1,3 +1,20 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    CSS file for the graphique window display
+
+    version 1.0.0 
+    
+*/
+
+
 #graph_window {
     display: none;
     position: absolute;

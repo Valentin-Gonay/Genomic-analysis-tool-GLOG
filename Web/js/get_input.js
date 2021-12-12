@@ -1,3 +1,20 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for getting input files
+
+    version 1.0.0 
+    
+*/
+
+
 function getTextFromInput() {
   // Selecting the input element and get its value
   let inputVal = document.getElementById("seq").value;
