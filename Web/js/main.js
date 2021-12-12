@@ -52,6 +52,10 @@ document.getElementById('menu_graph').addEventListener('click',function() {
         displayerror();
         return
     }
+    else if (main.current_user.current_project.resultat.alignments.length ==0){
+        displayerror();
+        return
+    }
     document.getElementById("input_window").style.display = 'none';
     document.getElementById("sequence_window").style.display = 'none';
     document.getElementById("graph_window").style.display = 'flex';
@@ -62,6 +66,10 @@ document.getElementById('menu_graph').addEventListener('click',function() {
 
 document.getElementById('menu_sequence').addEventListener('click',function(){
     if(!main.current_user.current_project.resultat.alignments){
+        displayerror();
+        return
+    }
+    else if (main.current_user.current_project.resultat.alignments.length == 0) {
         displayerror();
         return
     }
