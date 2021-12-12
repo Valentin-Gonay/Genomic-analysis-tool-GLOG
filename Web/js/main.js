@@ -46,6 +46,6 @@ async function loadresu(main){
 }
 
 async function loadresufrominput(project,resultat){
-    let text= await (get_resultat()).then(
-    resultat.parser_res(text,resultat.alignments,project.inputsequence,project.sequences));
+    let text= await (get_resultat()).then(console.log())
+    resultat.parser_res(text,resultat.alignments,project.inputsequence,project.sequences);
  }
