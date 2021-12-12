@@ -31,11 +31,27 @@ btninput.addEventListener('click', Loadinput,false)
 
 
 document.getElementById('menu_graph').addEventListener('click',function() {
+    if (!main.current_user.current_project.resultat.alignments) {
+        displayerror();
+        return
+    }
+    document.getElementById("input_window").style.display = 'none';
+    document.getElementById("sequence_window").style.display = 'none';
+    document.getElementById("graph_window").style.display = 'flex';
+    document.getElementById("start_bot").className = "animation start-graph";
     clean_child_list("bouton_deroulant");
     createDropdownMenu(main);
 });
 
 document.getElementById('menu_sequence').addEventListener('click',function(){
+    if(!main.current_user.current_project.resultat.alignments){
+        displayerror();
+        return
+    }
+    document.getElementById("input_window").style.display = 'none';
+    document.getElementById("sequence_window").style.display = 'flex';
+    document.getElementById("graph_window").style.display = 'none';
+    document.getElementById("start_bot").className = "animation start-sequence";
     clean_child_list("dropdown-alignment");
     creat_list_align(main);
 });
