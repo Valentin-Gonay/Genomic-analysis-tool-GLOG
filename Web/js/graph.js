@@ -11,7 +11,7 @@ function createDropdownMenu(alignements){ //A changer : prendre l'object de rés
     let button = document.createElement('a');
     button.setAttribute('onclick', fct);
     button.textContent = alignments[key].sequence_Q.ID.substring(1,24) + ' - ' + alignments[key].sequence_2.ID.substring(1,24);
-    let div = document.getElementById('bouton_deroulant');
+    div = document.getElementById('bouton_deroulant');
     div.appendChild(button);
   }
 };
