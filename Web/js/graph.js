@@ -251,7 +251,6 @@ function crea_dataAlign(align) {
   data_graphGap.datasets[0].data.push(100 - Number(align.stat.pGaps));
   data.push(data_graphGap);
 
-  console.log(data);
   return data;
 }
 

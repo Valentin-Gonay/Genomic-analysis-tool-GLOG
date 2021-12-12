@@ -122,7 +122,6 @@ class Alignment {
 class Resultat {
     constructor(){
         this.alignments = [];
-        this.statistics;
     }
 
     async parse_resu(input_seq,all_seq){
