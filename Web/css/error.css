@@ -16,11 +16,12 @@
 
 #loading_div_error{
     display: none;
-    margin-left: 250px;
+    margin-left: 260px;
     width: calc(100% - 515px);
     height: calc(100vh - 70px);
     z-index: 49;
     position: absolute;
+    top: 0%;
 }
 
 svg {
