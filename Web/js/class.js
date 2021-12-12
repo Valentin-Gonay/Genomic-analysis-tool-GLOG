@@ -1,4 +1,18 @@
-// CECI est le fichier de classes
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for all class definition
+
+    version 1.0.0 
+    
+*/
 
 class Sequence{
     constructor(sequence = '', ID = ''){

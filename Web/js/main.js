@@ -1,3 +1,20 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for initialising main class
+
+    version 1.0.0 
+    
+*/
+
+
 const Udef = [new User('defaut')]
 const main = new Main(Udef, Udef[0]);
 launch_init()

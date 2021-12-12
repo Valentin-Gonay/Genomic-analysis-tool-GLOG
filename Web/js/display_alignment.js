@@ -1,3 +1,20 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for formating sequences alignments and display
+
+    version 1.0.0 
+    
+*/
+
+
 function creat_list_align(main){
     let alignments = main.current_user.current_project.resultat.alignments;
     let div = document.getElementById('dropdown-alignment');

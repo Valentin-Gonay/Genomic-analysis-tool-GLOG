@@ -1,3 +1,20 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    CSS file for the input window display
+
+    version 1.0.0 
+    
+*/
+
+
 #input_window {
     display: flex;
     border: 3px solid #949596;

@@ -1,8 +1,17 @@
-/* 
-Thomas Baudeau / Gregory Bordier / Valentin Gonay / JACQUES Patrick
-loading.js : fonctions de chargement et blockage des bouttons
-July 9 2021
-Version 1.5.0
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for loading display implementation
+
+    version 1.0.0 
+    
 */
 
 function loadStart(function_name){

@@ -1,3 +1,18 @@
+/*  
+    12/12/2021
+
+    Quentin CAPUZET
+    Loïc PERON
+    Valentin GONAY
+    Gregory BORDIER
+    Thomas BAUDEAU
+    Elie BORDRON
+
+    JS file for creating request to node server and launch python script
+
+    version 1.0.0 
+    
+*/
 
 
 async function launch_test_py_node(){
